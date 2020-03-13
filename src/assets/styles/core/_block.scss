@@ -1,0 +1,29 @@
+.block {
+  position: relative;
+
+  &__wrapper {
+    position: relative;
+    margin: 0 auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    max-width: $max-width;
+  }
+}
+
+@include do($lg) {
+  .block {
+    &__wrapper {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
+
+@include do($sm) {
+  .block {
+    &__wrapper {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}

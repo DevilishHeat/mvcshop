@@ -1,0 +1,11 @@
+@mixin do($width, $type: "max-width") {
+  @if ($type == "min-width") {
+    @media all and (#{$type}: $width) {
+      @content;
+    }
+  } @else {
+    @media all and (max-width: $width) {
+      @content;
+    }
+  }
+}

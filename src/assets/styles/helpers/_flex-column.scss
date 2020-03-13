@@ -1,0 +1,11 @@
+@mixin flex-column($numberOfColumns, $columns: 1, $margins: 0) {
+  @if ($numberOfColumns == $columns and $margins == 0) {
+    flex-basis: 100%;
+    max-width: none;
+  } @else {
+    $flex-basis: unquote("calc(" + ((100 / $columns) * $numberOfColumns) + "% - " + ($margins * 2) + ")");
+
+    flex-basis: $flex-basis;
+    max-width: $flex-basis;
+  }
+}

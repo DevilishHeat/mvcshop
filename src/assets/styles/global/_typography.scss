@@ -1,0 +1,30 @@
+/* --------------------------------
+  Typography
+-------------------------------- */
+
+
+/* General settings 🧳 */
+$font-weight-thin: 100;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+$font-weight-black: 900;
+
+$font-fallback: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica", " Arial", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+$font-primary: "Rubik", $font-fallback;
+$font-weight: $font-weight-regular;
+
+$text-base: (
+  font-size: 12px,
+  line-height: 18px,
+  font-weight: $font-weight-regular
+);
+
+$button-base: (
+  font-size: map-get($map: $text-base, $key:font-size),
+  line-height: map-get($map: $text-base, $key:line-height),
+  font-weight: $font-weight-medium
+);

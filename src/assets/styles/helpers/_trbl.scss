@@ -1,0 +1,23 @@
+@mixin trbl($args...) {
+  @if (length($args) == 1) {
+    top: $args;
+    right: $args;
+    bottom: $args;
+    left: $args;
+  } @else if (length($args) == 2) {
+    top: nth($args, 1);
+    right: nth($args, 2);
+    bottom: nth($args, 1);
+    left: nth($args, 2);
+  } @else if (length($args) == 3) {
+    top: nth($args, 1);
+    right: nth($args, 2);
+    bottom: nth($args, 3);
+    left: nth($args, 2);
+  } @else if (length($args) == 4) {
+    top: nth($args, 1);
+    right: nth($args, 2);
+    bottom: nth($args, 3);
+    left: nth($args, 4);
+  }
+}

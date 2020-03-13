@@ -1,0 +1,91 @@
+/* --------------------------------
+  Pallete 🎨
+-------------------------------- */
+
+/* Text */
+$color: (
+  default: #b1b1b1,
+  light: #ffffff,
+  remark: #777777,
+  highlight: #000000,
+  focus: #1bc748,
+  warning: #fbbc05
+);
+
+$bg: (
+  primary: rgb(221, 239, 251),
+  secondary: rgb(245, 245, 245),
+  light: white,
+  dark: rgb(44, 44, 44),
+  warning: #fbbc05
+);
+
+/* Title */
+$title: (
+  default: map-get($map: $color, $key:hightlight),
+);
+
+/* Range */
+$slider: (
+  subtitle: #777777,
+  bar-default: rgb(212, 212, 212),
+  bar-active: rgb(27, 199, 72),
+  bar-disabled: rgb(234, 67, 53),
+);
+
+$tooltip: (
+  bg: rgba(30, 30, 30, 0.8),
+  box-shadow: 0 6px 30px 0 rgba(0, 0, 0, 0.12),
+  border-radius: 10px 0 10px 0,
+);
+
+$dash-color: #d4d4d4;
+
+/* Buttons */
+$btn-primary: (
+  color: map-get($map: $color, $key:hightlight),
+  bg-default: rgb(251, 188, 5),
+  bg-focus: #fba105,
+  bg-active: #fb9005
+);
+
+$btn-transparent: (
+  color: map-get($map: $color, $key:hightlight),
+  bg-default: transparent,
+  border-default: rgb(57, 204, 69),
+  border-focus: rgb(35, 180, 47),
+  border-active: rgb(35, 180, 47)
+);
+
+$btn-menu: (
+  default: #23b230,
+  focus: #23b42f,
+  close: rgb(212, 212, 212)
+);
+
+
+/* Sidebar */
+$sidebar: (
+  bg: #ffffff,
+  substrate: rgba(44, 44, 44, 0.4)
+);
+
+/* Navigation */
+$navigation: (
+  default: #1e1e1e,
+  focus: #39cc45
+);
+
+/* Card */
+$card: (
+  box-shadow: 0 6px 30px 0 rgba(0, 0, 0, 0.06)
+);
+
+/* Contacts */
+$contacts: (
+  box-shadow: 0 6px 30px 0 rgba(0, 0, 0, 0.06)
+);
+
+/* Footer */
+$footer: (
+);
