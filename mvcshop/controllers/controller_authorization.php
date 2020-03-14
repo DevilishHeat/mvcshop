@@ -9,7 +9,10 @@ class controller_authorization extends controller
 
     public function action_index()
     {
-      return $this->model->authorization();
+      $json = $this->model->authorization();
+      header('Content-Type: application/json');
+      echo json_encode($json, JSON_UNESCAPED_UNICODE);
+    // echo print_r($_POST);
     }
 
     public function action_logout()

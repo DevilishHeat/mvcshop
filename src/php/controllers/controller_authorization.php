@@ -11,7 +11,8 @@ class controller_authorization extends controller
     {
       $json = $this->model->authorization();
       header('Content-Type: application/json');
-      echo json_encode($json);
+      echo json_encode($json, JSON_UNESCAPED_UNICODE);
+    // echo print_r($_POST);
     }
 
     public function action_logout()
