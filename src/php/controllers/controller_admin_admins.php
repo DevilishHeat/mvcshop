@@ -30,8 +30,42 @@ class controller_admin_admins extends controller
 
     public function action_delete_admin()
     {
+      if ($_POST['login'] == $_SESSION['admin'])
+      {
+        $_SESSION['message'] = 'Нельзя удалить авторизованного пользователя';
+        header('Location: http://mvcshop.com/admin_admins');
+        die();
+      }
         $this->model->delete_admin();
         header('Location: http://mvcshop.com/admin_admins');
         die();
+    }
+
+    public function action_change_password()
+    {
+      $this->view->generate('view_admin_admins_change_password.php', 'view_template_admin.php');
+    }
+
+    public function action_update_password()
+    {
+      if ($this->model->get_password() == $_POST['old_password'])
+      {
+        if ($_POST['new_password'] == $_POST['password_repeat'])
+        {
+          $this->model->update_password();
+          header('Location: http://mvcshop.com/admin_admins');
+          die();
+        } else
+        {
+          $_SESSION['message'] = 'Пароли не совпадают';
+          header('Location: http://mvcshop.com/admin_admins/change_password');
+          die();
+        }
+      } else
+      {
+        $_SESSION['message'] = 'Старый пароль не подходит';
+        header('Location: http://mvcshop.com/admin_admins/change_password');
+        die();
+      }
     }
 }
