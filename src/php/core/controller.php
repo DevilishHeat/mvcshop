@@ -12,5 +12,6 @@ class Controller
 
     function action_index()
     {
+        
     }
 }

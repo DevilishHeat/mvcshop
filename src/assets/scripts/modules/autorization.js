@@ -8,10 +8,11 @@ export default () => {
     event.preventDefault();
     let data = JSON.stringify($form.serializeArray());
 
-    // $.ajax({
-    //   method: 'POST',
-    //   url: `http://mvcshop.com/${API}`,
-    //   data,
-    // });
+    $.ajax({
+      method: 'POST',
+      url: `http://mvcshop.com/${API}`,
+      data,
+      dataType: 'json',
+    });
   });
 };

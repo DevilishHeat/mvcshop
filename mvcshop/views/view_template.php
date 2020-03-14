@@ -19,7 +19,7 @@
 				<?php include 'views/header.php'; ?>
 			</div>
 			<main class="body__content">
-					<!-- <?php include 'views/'.$content_view; ?> -->
+					<?php include 'views/'.$content_view; ?>
 			</main>
 			<div class="body__footer">
 				<?php include 'views/footer.php'; ?>
