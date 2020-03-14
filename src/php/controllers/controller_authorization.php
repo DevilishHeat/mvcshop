@@ -9,7 +9,7 @@ class controller_authorization extends controller
 
     public function action_index()
     {
-        return $this->model->authorization();
+      return $this->model->authorization();
     }
 
     public function action_logout()
