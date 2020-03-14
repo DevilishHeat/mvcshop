@@ -9,9 +9,7 @@ class controller_authorization extends controller
 
     public function action_index()
     {
-        $this->model->authorization();
-        header('Location: http://mvcshop.com' . $_POST['location']);
-        die();
+        return $this->model->authorization();
     }
 
     public function action_logout()

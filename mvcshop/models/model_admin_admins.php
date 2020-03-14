@@ -35,8 +35,36 @@ class model_admin_admins extends model
         $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
         $stmt = $dbh->prepare("
             DELETE FROM admins
-            WHERE id = :id
+            WHERE admins.ID = :id
             ");
         $stmt->execute(array(':id'=>$_POST['id']));
+    }
+
+    public function update_password()
+    {
+      $this->set_dsn();
+      $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
+      $stmt = $dbh->prepare("
+         UPDATE admins
+         SET password = :password
+         WHERE ID = :id
+         ");
+      $stmt->execute(array(
+          ':id'=>$_POST['id'],
+          ':password'=>$_POST['new_password']
+          ));
+    }
+
+    public function get_password()
+    {
+      $this->set_dsn();
+      $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
+      $stmt = $dbh->prepare("
+         SELECT password
+         FROM admins
+         WHERE ID = :id");
+      $stmt->execute(array(':id'=>$_POST['id']));
+      $password = $stmt->fetch(PDO::FETCH_ASSOC);
+      return $password['password'];
     }
 }

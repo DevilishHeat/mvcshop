@@ -8,20 +8,30 @@ class model_authorization extends model
         $stmt = $dbh->prepare("
             SELECT username, password
             FROM users
-            WHERE username = :username AND password = :password");
-        $stmt->execute(array
-        (
-            ':username'=>$_POST['username'],
-            ':password'=>$_POST['password']
-        ));
+            WHERE username = :username");
+        $stmt->execute(array(':username'=>$_POST['username']));
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if (isset($user['username']))
         {
-            $_SESSION['authorization'] = true;
-            $_SESSION['username'] = $user['username'];
+          if ($user['password'] == $_POST['password'])
+          {
+            return array(
+                'status'=> '200',
+                'username'=>$user['username']
+            );
+          } else
+          {
+            return array(
+                'status'=> '400',
+                'message'=>'Неверный пароль'
+            );
+          }
         } else
         {
-            $_SESSION['message'] = 'Введены неверные данные';
+          return array(
+              'status'=> '400',
+              'message'=>'Пользователя с таким именем не существует'
+          );
         }
     }
 }

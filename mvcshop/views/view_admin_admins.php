@@ -29,18 +29,22 @@ foreach ($data as $admin):
             ?>
         </td>
         <td>
-            <a href="update_password">Изменить пароль</a>
+            <form action="admin_admins/change_password" method="post">
+                <input type="hidden" name="id" value="<?= $admin['ID'] ?>">
+                <input type="submit" value="Изменить пароль">
+            </form>
         </td>
         <td>
             <form action="admin_admins/delete_admin" method="post">
-                <input type="hidden" name="id" value="<?= $admin['id'] ?>">
+                <input type="hidden" name="login" value="<?= $admin['login'] ?>">
+                <input type="hidden" name="id" value="<?= $admin['ID'] ?>">
                 <input type="submit" value="Удалить">
+                <?= '<br>' . $_SESSION['message'] ?>
             </form>
         </td>
     </tr>
 <?php endforeach; ?>
 </table>
-<!--admin_admins/create_admin-->
 <form action="admin_admins/create_admin" method="post">
     <br>
     <table width="50%" border="1">
@@ -68,7 +72,6 @@ foreach ($data as $admin):
             </td>
             <td>
                 <input type="submit" value="Создать">
-                <a href="admin_admins/create_admin">Создать</a>
             </td>
         </tr>
     </table>
