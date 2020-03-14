@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 if (!isset($_SESSION['username']))
 {
     $_SESSION['authorization'] = 0;
@@ -6,18 +6,51 @@ if (!isset($_SESSION['username']))
 {
     $_SESSION['authorization'] = 1;
 }
-?>
-<header>
-    <table width="100%">
-        <tr>
-            <td>
-                <a href="/main">Главная</a>
-            </td>
-            <td>
-                <a href="order">Корзина</a>
-            </td>
-            <td align="right">
-                <?php
+?> -->
+<header class="header">
+	<div class="header__wrapper">
+    <div class="header__header-top header-top">
+			<div class="header-top__wrapper container">
+				<div class="header-top__row row">
+					<div class="col-3">
+						<a href="/main" class="header-top__logo logo">
+							<div class="logo__image">
+								<img class="logo__img" src="assets/images/logo/logo-winter.png" alt="Логотип">
+							</div>
+						</a>
+					</div>
+					<div class="col-9 d-flex">
+						<div class="header-top__user-actions user-actions">
+							<div class="user-actions__list">
+								<div class="user-actions__item">
+									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#autorization">Войти</button>
+								</div>
+								<div class="user-actions__item">
+									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registration">Регистрация</button>
+								</div>
+								<div class="user-actions__item">
+										<button class="btn btn-danger">	Корзина <span class="badge badge-light">10</span></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="header__header-bottom header-bottom bg-light">
+			<div class="header-bottom__wrapper container">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link active" href="/main">Главная <span class="sr-only">(current)</span></a>
+						<a class="nav-item nav-link" href="/about">Контакты</a>
+						<a class="nav-item nav-link" href="/about">О компании</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<!-- <?php
                 if ($_SESSION['authorization']):
                     echo 'Вход выполнен<br>' . $_SESSION['username'] ?>
                     <form action="../authorization/logout" method="post">
@@ -39,8 +72,10 @@ if (!isset($_SESSION['username']))
                         <input type="submit" value="Войти">
                     </form>
                     <a href="registration">Регистрация</a>
-                <?php endif; ?>
-            </td>
-        </tr>
-    </table>
+                <?php endif; ?> -->
 </header>
+
+<?php
+	includeTemplate('/templates/modals/authorization.php');
+	includeTemplate('/templates/modals/registration.php');
+?>

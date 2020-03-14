@@ -144,7 +144,6 @@
      "indentation": [2, {"ignore": ["inside-parens"]}],
 
     "max-empty-lines": 2,
-    "no-duplicate-selectors": true,
     "no-duplicate-at-import-rules": true,
     "no-empty-source": true,
     "no-eol-whitespace": true,

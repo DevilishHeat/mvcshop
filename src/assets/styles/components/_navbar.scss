@@ -1,0 +1,11 @@
+.navbar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.nav {
+  &-link {
+    font-size: 1.2em;
+    font-weight: $font-weight-medium;
+  }
+}

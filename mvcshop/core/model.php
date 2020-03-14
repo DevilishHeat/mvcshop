@@ -1,7 +1,7 @@
 <?php
 class model
 {
-    protected $db_host = 'localhost';
+    protected $db_host = '192.168.0.100';
     protected $db_username = 'root';
     protected $db_password = '';
     protected $db_name = 'shop';

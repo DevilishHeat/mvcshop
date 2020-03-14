@@ -29,6 +29,11 @@ module.exports = () => {
         }),
       ]
     },
+    globals: {
+      jquery: "$",
+      "popper.js": "Popper"
+    },
+    external: ["jquery", "popper.js"],
     output: {
       format: 'umd'
     }

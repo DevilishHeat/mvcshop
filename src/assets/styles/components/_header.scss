@@ -1,3 +1,16 @@
 .header {
-  color: red;
+  &-top {
+    padding: 15px 0;
+  }
+}
+
+.header-top {
+  &__row {
+    align-items: center;
+  }
+
+  /* parent-el have atomic css-class with flex */
+  &__user-actions {
+    margin-left: auto;
+  }
 }

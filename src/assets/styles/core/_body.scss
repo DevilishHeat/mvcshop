@@ -48,14 +48,7 @@ body {
     flex: 0 0 auto;
   }
 
-  &__header {
-    position: absolute;
-    @include trbl(0, 0, auto, 0);
-    z-index: 1;
-  }
-
   &__content {
-    position: relative;
     flex-grow: 1;
   }
 

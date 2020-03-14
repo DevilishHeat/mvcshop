@@ -1,0 +1,13 @@
+.user-actions {
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
