@@ -1,5 +1,5 @@
 <?php
-class Controller_Main extends controller
+class controller_main extends controller
 {
     public function __construct()
     {

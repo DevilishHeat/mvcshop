@@ -7,7 +7,7 @@ const { src, dest } = require('gulp'),
 
 
 module.exports = () => {
-return src(phpCore.src)
+return src(phpCore.src, {dot: true})
     .pipe(plumber({
       errorHandler: notify.onError((error) => {
         console.log(error.message);

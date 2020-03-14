@@ -18,12 +18,12 @@ class controller_admin_admins extends controller
         if ($_POST['password'] == $_POST['password_repeat'] and $_POST['login'] != '')
         {
             $this->model->create_admin();
-            header('Location: http://mvcshop/admin_admins');
+            header('Location: http://mvcshop.com/admin_admins');
             die();
         } else
         {
             $_SESSION['message'] = 'Введенны недопустимые данные';
-            header('Location: http://mvcshop/admin_admins');
+            header('Location: http://mvcshop.com/admin_admins');
             die();
         }
     }
@@ -31,7 +31,7 @@ class controller_admin_admins extends controller
     public function action_delete_admin()
     {
         $this->model->delete_admin();
-        header('Location: http://mvcshop/admin_admins');
+        header('Location: http://mvcshop.com/admin_admins');
         die();
     }
 }

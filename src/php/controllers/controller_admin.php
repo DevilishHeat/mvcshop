@@ -11,7 +11,7 @@ class controller_admin extends controller
     {
         if (isset($_SESSION['admin']))
         {
-            header('Location: http://mvcshop/admin/orders');
+            header('Location: http://mvcshop.com/admin/orders');
             die();
         }else
         {
@@ -21,12 +21,14 @@ class controller_admin extends controller
     public function action_authorization()
     {
         $this->model->authorization();
+        header('Location: http://mvcshop.com/admin');
+        die();
     }
 
     public function action_logout()
     {
         unset($_SESSION['admin']);
-        header('Location: http://mvcshop/admin');
+        header('Location: http://mvcshop.com/admin');
         die();
     }
 

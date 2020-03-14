@@ -10,13 +10,15 @@ class controller_authorization extends controller
     public function action_index()
     {
         $this->model->authorization();
+        header('Location: http://mvcshop.com' . $_POST['location']);
+        die();
     }
 
     public function action_logout()
     {
         $_SESSION['authorization'] = false;
         unset($_SESSION['username']);
-        header('Location: http://mvcshop' . $_POST['location']);
+        header('Location: http://mvcshop.com' . $_POST['location']);
         die();
     }
 }

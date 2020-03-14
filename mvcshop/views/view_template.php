@@ -5,9 +5,9 @@
     <title>Главная</title>
 </head>
 <?php
-include 'application/views/header.php';
+include 'views/header.php';
 ?>
 <body>
-<?php include 'application/views/'.$content_view; ?>
+<?php include 'views/'.$content_view; ?>
 </body>
 </html>

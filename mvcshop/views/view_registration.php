@@ -2,7 +2,7 @@
 session_start();
 ?>
 <div align="center">
-    <form action="registration/create_user" method="post">
+    <form action="/registration/create_user" method="post">
         <label for="username">Имя пользователя</label> <br>
         <input type="text" id="username" name="username" required> <br>
         <label for="email">Email</label> <br>

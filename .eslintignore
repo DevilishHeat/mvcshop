@@ -2,4 +2,4 @@
 /.vscode
 node_modules
 /utils/**/*.js
-/src/templates/*
+/src/php/*

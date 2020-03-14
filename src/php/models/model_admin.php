@@ -23,7 +23,5 @@ class model_admin extends model
         {
             $_SESSION['message'] = 'Введены неверные данные';
         }
-        header('Location: http://mvcshop/admin');
-        die();
     }
 }

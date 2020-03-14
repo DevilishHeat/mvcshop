@@ -16,5 +16,7 @@ class controller_admin_catalog extends controller
     public function action_update_item()
     {
         $this->model->update_item();
+        header('Location: http://mvcshop.com/admin/catalog');
+        die();
     }
 }

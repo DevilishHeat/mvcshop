@@ -28,7 +28,5 @@ class model_admin_catalog extends model
             ':category'=>$_POST['category'],
             ':price'=>$_POST['price']
         ));
-        header('Location: http://mvcshop/admin/catalog');
-        die();
     }
 }

@@ -6,7 +6,7 @@ module.exports = {
     build: `./${APP_NAME}`,
   },
   phpCore: {
-    src: './src/php/**/*.*',
+    src: ['./src/php/**/*.*', './src/php/.*'],
     watch: './src/php/**/*.*',
     dest: `./${APP_NAME}`
   },

@@ -23,7 +23,5 @@ class model_authorization extends model
         {
             $_SESSION['message'] = 'Введены неверные данные';
         }
-        header('Location: http://mvcshop' . $_POST['location']);
-        die();
     }
 }

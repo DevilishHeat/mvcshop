@@ -22,7 +22,7 @@ class controller_registration extends controller
                 {
                     if ($this->model->create_user())
                     {
-                        header('Location: http://mvcshop/registration/complete');
+                        header('Location: http://mvcshop.com/registration/complete');
                         die;
                     }
                 }
@@ -31,7 +31,7 @@ class controller_registration extends controller
         {
             $_SESSION['message'] = 'Пароли не совпадают';
         }
-        header('Location: http://mvcshop/registration');
+        header('Location: http://mvcshop.com/registration');
         die;
     }
     public function action_complete()

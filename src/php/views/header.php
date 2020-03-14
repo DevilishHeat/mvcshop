@@ -20,12 +20,12 @@ if (!isset($_SESSION['username']))
                 <?php
                 if ($_SESSION['authorization']):
                     echo 'Вход выполнен<br>' . $_SESSION['username'] ?>
-                    <form action="authorization/logout" method="post">
+                    <form action="../authorization/logout" method="post">
                         <input type="hidden" name="location" value="<?= $_SERVER['REQUEST_URI'] ?>">
                         <input type="submit" value="Выход">
                     </form>
                 <?php else: ?>
-                    <form action="authorization" method="post">
+                    <form action="../authorization" method="post">
                         <div>
                             <label for="auth_user">Имя пользователя</label> <br>
                             <input type="text" name="username" id="auth_user">
