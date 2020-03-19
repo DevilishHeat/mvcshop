@@ -43,7 +43,7 @@ if (!isset($_SESSION['username']))
 				<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="navbar-nav">
 						<a class="nav-item nav-link active" href="/main">Главная <span class="sr-only">(current)</span></a>
-						<a class="nav-item nav-link" href="/about">Контакты</a>
+						<a class="nav-item nav-link" href="/contacts">Контакты</a>
 						<a class="nav-item nav-link" href="/about">О компании</a>
 					</div>
 				</nav>

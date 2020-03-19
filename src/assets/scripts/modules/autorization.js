@@ -6,12 +6,13 @@ export default () => {
 
   $submitBtn.off('click.registration').on('click.registration', event => {
     event.preventDefault();
-    let data = JSON.stringify($form.serializeArray());
+    let data = $form.serializeArray();
 
     $.ajax({
-      method: 'POST',
+      type: 'POST',
       url: `http://mvcshop.com/${API}`,
       data,
+      dataType: 'json',
     });
   });
 };

@@ -1,4 +1,31 @@
-<table width="100%">
+<section class="section">
+	<div class="section__wrapper container pt-5 pb-5">
+		<div class="section__side mb-3">
+			<h2 class="section__title text-dark text-uppercase">Каталог</h2>
+		</div>
+		<div class="container__main">
+			<div class="container__row row">
+				<?php foreach ($data as $item): ?>
+					<div class="col-3 mb-3">
+						<div class="card border border-primary">
+							<img class="card-img-top" src="<?= $this->images . $item['name'] . '.jpg' ?>" alt="Изображение товара">
+							<div class="card-body">
+								<h5 class="card-title text-primary"><?= $item['name']?></h5>
+								<p class="card-text text-dark"><?= $item['description'] ?></p>
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item text-dark border-primary">Категория: <?= $item['category'] ?></li>
+								<li class="list-group-item text-dark border-primary">Цена: <?= $item['price'] ?></li>
+							</ul>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- <table width="100%">
     <tr>
         <td>
             Каталог:
@@ -10,32 +37,4 @@
             </form>
         </td>
     </tr>
-</table>
-
-
-<?php
-foreach ($data as $item): ?>
-<table border="2">
-    <tr>
-        <td colspan="2" align="center">
-            <?php echo $item['name']?>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <img src="<?= $item['img'] ?>" width="100">
-        </td>
-        <td>
-            <?= $item['description'] ?>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Категория: <?= $item['category'] ?>
-        </td>
-        <td>
-            Цена: <?= $item['price'] ?>
-        </td>
-    </tr>
-</table>
-<?php endforeach; ?>
+</table> -->

@@ -1,3 +1,3 @@
-<div align="center">
-    <img src="assets/images/404.png" align="center">
+<div>
+    <img class="img-fluid" src="assets/images/404.png">
 </div>
