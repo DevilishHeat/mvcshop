@@ -11,7 +11,7 @@ class controller_admin extends controller
     {
         if (isset($_SESSION['admin']))
         {
-            header('Location: http://mvcshop.com/admin/orders');
+            header('Location: http://mvcshop.com/admin_orders');
             die();
         }else
         {
@@ -32,8 +32,4 @@ class controller_admin extends controller
         die();
     }
 
-    public function action_orders()
-    {
-        $this->view->generate('view_admin_orders.php', 'view_template_admin.php');
-    }
 }

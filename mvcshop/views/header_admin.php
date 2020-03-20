@@ -22,9 +22,9 @@ if (isset($_SESSION['admin'])): ?>
 					<nav class="navbar navbar-expand-lg navbar-light">
 						<div class="navbar-nav">
 							<a class="nav-item nav-link" href="/">Главная</a>
-							<a class="nav-item nav-link active" href="../admin_catalog">Каталог <span class="sr-only">(current)</span></a>
-							<a class="nav-item nav-link" href="../admin_admins">Администраторы</a>
-							<a class="nav-item nav-link" href="/about">О компании</a>
+							<a class="nav-item nav-link active" href="admin_catalog">Каталог</a>
+							<a class="nav-item nav-link" href="admin_admins">Администраторы</a>
+							<a class="nav-item nav-link" href="admin_categories">Категории</a>
 						</div>
 					</nav>
 				</div>

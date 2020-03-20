@@ -5,9 +5,16 @@ class model_admin_catalog extends model
     {
         $this->set_dsn();
         $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
-        $stmt = $dbh->prepare("SELECT * FROM items");
+        $stmt = $dbh->prepare(
+          "
+            SELECT * FROM items
+            LEFT JOIN categories ON items.category_id = categories.id");
         $stmt->execute();
-        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $dbh->prepare("SELECT * FROM categories");
+        $stmt->execute();
+        $categorys = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $data = array('items'=>$items, 'categorys'=>$categorys);
         return $data;
     }
 

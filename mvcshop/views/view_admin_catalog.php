@@ -11,7 +11,7 @@
   </tr>
   </thead>
   <tbody>
-  <?php foreach ($data as $item): ?>
+  <?php foreach ($data['items'] as $item): ?>
   <tr>
     <td><img src="<?= $this->images . $item['name'] . '.jpg' ?>" height="100"></td>
     <td class="align-middle"><?= $item['name'] ?></td>
@@ -59,7 +59,13 @@
         <textarea rows="3" cols="50" name="description"></textarea>
       </td>
       <td>
-        <input type="text" name="category">
+        <select name="category">
+          <?php foreach ($data['categorys'] as $category): ?>
+          <option>
+            <?= $category['category'] ?>
+          </option>
+          <?php endforeach; ?>
+        </select>
       </td>
       <td>
         <input type="text" name="price">
@@ -73,4 +79,5 @@
     </tr>
   </table>
 </form>
+
 
