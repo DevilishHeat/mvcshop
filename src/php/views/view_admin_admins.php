@@ -1,15 +1,18 @@
-<table width="50%" border="1">
-    <tr>
-        <td>
-            Логин
-        </td>
-        <td>
-            Пароль
-        </td>
-        <td colspan="2">
-            Функции
-        </td>
-    </tr>
+<table class="table" border="1">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">
+      Логин
+    </th>
+    <th scope="col">
+      Пароль
+    </th>
+    <th scope="col" colspan="2">
+      Функции
+    </th>
+  </tr>
+  </thead>
+  <tbody>
 <?php
 foreach ($data as $admin):
 ?>
@@ -30,25 +33,28 @@ foreach ($data as $admin):
         </td>
         <td>
             <form action="admin_admins/change_password" method="post">
-                <input type="hidden" name="id" value="<?= $admin['ID'] ?>">
+                <input type="hidden" name="id" value="<?= $admin['admin_id'] ?>">
                 <input type="submit" value="Изменить пароль">
             </form>
         </td>
         <td>
             <form action="admin_admins/delete_admin" method="post">
                 <input type="hidden" name="login" value="<?= $admin['login'] ?>">
-                <input type="hidden" name="id" value="<?= $admin['ID'] ?>">
+                <input type="hidden" name="id" value="<?= $admin['admin_id'] ?>">
                 <input type="submit" value="Удалить">
                 <?= '<br>' . $_SESSION['message'] ?>
             </form>
         </td>
     </tr>
 <?php endforeach; ?>
+  </tbody>
 </table>
 <form action="admin_admins/create_admin" method="post">
     <br>
-    <table width="50%" border="1">
-        <thead>Создать новую учётную запись</thead>
+    <table class="table" width="50%" border="1">
+        <thead class="thead-dark" align="center">
+        <th scope="col" colspan="4">Создать новую учётную запись</th>
+        </thead>
         <tr>
             <td>
                 <label for="login">Логин</label>
@@ -56,9 +62,11 @@ foreach ($data as $admin):
             <td>
                 <label for="password">Пароль</label>
             </td>
-            <td colspan="2">
+            <td>
                 <label for="password_repeat">Повторите пароль</label>
             </td>
+          <td>
+          </td>
         </tr>
         <tr>
             <td>

@@ -16,6 +16,13 @@
 							<ul class="list-group list-group-flush">
 								<li class="list-group-item text-dark border-primary">Категория: <?= $item['category'] ?></li>
 								<li class="list-group-item text-dark border-primary">Цена: <?= $item['price'] ?></li>
+                <li class="list-group-item text-dark border-primary">
+                  <form action="cart/add_item" method="post">
+                    <input type="hidden" name="location" value="<?= $_SERVER['REQUEST_URI'] ?>">
+                    <input type="hidden" name="id" value="<?= $item['item_id'] ?>">
+                    <input type="submit" value="В корзину">
+                  </form>
+                </li>
 							</ul>
 						</div>
 					</div>

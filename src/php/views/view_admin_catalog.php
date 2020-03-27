@@ -21,13 +21,13 @@
     <td class="align-middle" align="center"><?= $item['quantity'] ?></td>
     <td class="align-middle" align="center">
       <form action="admin_catalog/update_item" method="post">
-        <input type="hidden" value="<?= $item['id'] ?>">
+        <input type="hidden" value="<?= $item['item_id'] ?>">
         <input type="submit" value="Изменить">
       </form>
     </td>
     <td class="align-middle" align="center">
       <form action="admin_catalog/delete_item" method="post">
-        <input type="hidden" value="<?= $item['id'] ?>" name="id">
+        <input type="hidden" value="<?= $item['item_id'] ?>" name="id">
         <input type="submit" value="Удалить">
       </form>
     </td>
@@ -60,7 +60,7 @@
       </td>
       <td>
         <select name="category">
-          <?php foreach ($data['categorys'] as $category): ?>
+          <?php foreach ($data['categories'] as $category): ?>
           <option>
             <?= $category['category'] ?>
           </option>

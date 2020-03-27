@@ -15,7 +15,7 @@ if (!isset($_SESSION['username']))
 					<div class="col-3">
 						<a href="/main" class="header-top__logo logo">
 							<div class="logo__image">
-								<img class="logo__img" src="assets/images/logo/logo-winter.png" alt="Логотип">
+								<img class="logo__img" src="<?= $this->images ?>logo/logo-winter.png" alt="Логотип">
 							</div>
 						</a>
 					</div>
@@ -29,7 +29,8 @@ if (!isset($_SESSION['username']))
 									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registration">Регистрация</button>
 								</div>
 								<div class="user-actions__item">
-										<button class="btn btn-danger">	Корзина <span class="badge badge-light">10</span></button>
+                  <a href="cart">Корзина</a>
+										<!--<button class="btn btn-danger">	Корзина <span class="badge badge-light">10</span></button>-->
 								</div>
 							</div>
 						</div>

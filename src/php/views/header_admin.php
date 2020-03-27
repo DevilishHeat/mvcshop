@@ -25,6 +25,7 @@ if (isset($_SESSION['admin'])): ?>
 							<a class="nav-item nav-link active" href="admin_catalog">Каталог</a>
 							<a class="nav-item nav-link" href="admin_admins">Администраторы</a>
 							<a class="nav-item nav-link" href="admin_categories">Категории</a>
+              <a class="nav-item nav-link" href="admin_orders">Заказы</a>
 						</div>
 					</nav>
 				</div>

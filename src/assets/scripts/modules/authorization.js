@@ -1,7 +1,7 @@
 export default () => {
   const API = 'authorization';
 
-  let $form = $('.js-autorization');
+  let $form = $('.js-authorization');
   let $submitBtn = $form.find('button[type="submit"]');
 
   $submitBtn.off('click.registration').on('click.registration', event => {

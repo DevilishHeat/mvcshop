@@ -35,7 +35,7 @@ class model_admin_admins extends model
         $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
         $stmt = $dbh->prepare("
             DELETE FROM admins
-            WHERE admins.ID = :id
+            WHERE admins.admin_id = :id
             ");
         $stmt->execute(array(':id'=>$_POST['id']));
     }
@@ -47,7 +47,7 @@ class model_admin_admins extends model
       $stmt = $dbh->prepare("
          UPDATE admins
          SET password = :password
-         WHERE ID = :id
+         WHERE admin_id = :id
          ");
       $stmt->execute(array(
           ':id'=>$_POST['id'],
@@ -62,7 +62,7 @@ class model_admin_admins extends model
       $stmt = $dbh->prepare("
          SELECT password
          FROM admins
-         WHERE ID = :id");
+         WHERE admin_id = :id");
       $stmt->execute(array(':id'=>$_POST['id']));
       $password = $stmt->fetch(PDO::FETCH_ASSOC);
       return $password['password'];

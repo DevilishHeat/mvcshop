@@ -18,7 +18,8 @@ class Route
         // получаем имя экшена
         if ( !empty($routes[2]) )
         {
-            $action_name = $routes[2];
+          $action_parts = explode('?', $routes[2]);
+          $action_name = $action_parts[0];
         }
 
         // добавляем префиксы

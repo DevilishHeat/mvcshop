@@ -11,13 +11,13 @@
       <td class="align-middle"><?= $category['category'] ?></td>
       <td class="align-middle" align="center">
         <form action="admin_categories/update_category" method="post">
-          <input type="hidden" value="<?= $category['id'] ?>">
+          <input type="hidden" value="<?= $category['category_id'] ?>">
           <input type="submit" value="Изменить">
         </form>
       </td>
       <td class="align-middle" align="center">
         <form action="admin_categories/delete_category" method="post">
-          <input type="hidden" value="<?= $category['id'] ?>" name="id">
+          <input type="hidden" value="<?= $category['category_id'] ?>" name="id">
           <input type="submit" value="Удалить">
         </form>
       </td>

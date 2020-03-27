@@ -30,7 +30,7 @@ class model_admin_categories extends model
     $stmt = $dbh->prepare(
       "
       DELETE FROM categories
-      WHERE id = :id
+      WHERE category_id = :id
       ");
     $stmt->execute(array(':id'=>$_POST['id']));
   }
