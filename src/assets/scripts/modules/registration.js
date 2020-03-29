@@ -9,6 +9,7 @@ export default () => {
   $submitBtn.off(`click.${API}`).on(`click.${API}`, event => {
     event.preventDefault();
     let data = $form.serializeArray();
+    console.log(data);
 
     $.ajax({
       type: 'POST',
@@ -16,15 +17,14 @@ export default () => {
       data,
       dataType: 'json',
       success: function(data) {
+        console.log('success', data);
         let { status, message } = data;
 
-        console.log('success', data);
-
-        /* 
+        /*
         if (status === 200) {
           ...
         }
-        
+
         */
 
         if (status === 400) {
