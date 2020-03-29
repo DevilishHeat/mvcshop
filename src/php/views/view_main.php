@@ -1,12 +1,13 @@
 <section class="section">
-	<div class="section__wrapper container pt-5 pb-5">
+	<div class="section__wrapper">
 		<div class="section__side mb-3">
 			<h2 class="section__title text-dark text-uppercase">Каталог</h2>
 		</div>
 		<div class="container__main">
+
 			<div class="container__row row">
 				<?php foreach ($data as $item): ?>
-					<div class="col-3 mb-3">
+					<div class="col-4 mb-3">
 						<div class="card border border-primary">
 							<img class="card-img-top" src="<?= $this->images . $item['name'] . '.jpg' ?>" alt="Изображение товара">
 							<div class="card-body">
