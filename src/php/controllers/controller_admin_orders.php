@@ -12,4 +12,11 @@ class controller_admin_orders extends controller
     $data = $this->model->get_data();
     $this->view->generate('view_admin_orders.php', 'view_template_admin.php', $data);
   }
+
+  public function action_delete_order()
+  {
+    $this->model->delete_order();
+    header('Location: http://mvcshop.com/admin_orders');
+    die();
+  }
 }

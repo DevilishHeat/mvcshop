@@ -1,28 +1,38 @@
-<?php $current_order_id = 0 ?>
+<?php
+$current_order_id = 0;
+?>
 <table class="table">
   <thead class="thead-dark">
-  <th scope="col">#</th>
-  <th scope="col">Заказчик</th>
-  <th scope="col">Сумма</th>
+  <th scope="col">Заказчик\товар</th>
+  <th scope="col">#заказа\товара</th>
+  <th scope="col">Сумма/цена</th>
+  <th scope="col"></th>
   </thead>
   <tbody>
   <?php foreach ($data as $order):
     if ($current_order_id != $order['order_id']):
   ?>
   <tr>
-    <td><?= $order['order_id'] ?></td>
-    <td><?= $order['username'] ?></td>
-    <td><?= $order['total_price'] ?></td>
-  </tr>
-  <?php endif; ?>
-  <tr>
+    <td><strong><?= $order['username'] ?></strong></td>
+    <td><strong><?= $order['order_id'] ?></strong></td>
+    <td><strong><?= $order['total_price'] ?></strong></td>
     <td>
-
+      <form action="admin_orders/delete_order" method="post">
+        <input type="hidden" name="id" value="<?= $order['order_id'] ?>">
+        <button type="submit" class="btn btn-primary">X</button>
+      </form>
     </td>
+  </tr>
+      <?php
+      $current_order_id = $order['order_id'];
+      endif;
+      ?>
+  <tr>
+    <td><?= $order['name'] ?></td>
+    <td><?= $order['quantity'] ?></td>
+    <td><?= $order['price'] ?></td>
   </tr>
   <?php endforeach; ?>
   </tbody>
 
 </table>
-<?php
-print_r($data);
