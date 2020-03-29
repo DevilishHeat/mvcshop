@@ -1,12 +1,12 @@
 export default () => {
   const API = 'authorization';
 
-  let $modal = $('#authorization');
-  let $form = $('.js-authorization');
+  let $modal = $(`#${API}`);
+  let $form = $(`.js-${API}`);
   let $submitBtn = $form.find('button[type="submit"]');
   let $alert = $modal.find('.alert-danger');
 
-  $submitBtn.off('click.registration').on('click.registration', event => {
+  $submitBtn.off(`click.${API}`).on(`click.${API}`, event => {
     event.preventDefault();
     let data = $form.serializeArray();
 
