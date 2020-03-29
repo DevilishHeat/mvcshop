@@ -36,14 +36,19 @@ class model_registration extends model
         $stmt = $dbh->prepare("
         INSERT INTO users (username, email, password)
         VALUES (:username, :email, :password)");
-        if(!$stmt->execute(array(
-            ':username'=>$_POST['username'],
-            ':email'=>$_POST['email'],
-            ':password'=>$_POST['password'])))
+        if ($stmt->execute(array(
+          ':username'=>$_POST['username'],
+          ':email'=>$_POST['email'],
+          ':password'=>$_POST['password'])))
         {
-            $_SESSION['message'] = 'проблемы с подключением к базе данных';
-            return false;
+          return array(
+            'status'=>200,
+            'username'=>$_POST['username']
+          );
         }
-        return true;
+        return array(
+          'status'=>400,
+          'message'=> 'Проблемы с подключением к базе данных',
+        );
     }
 }

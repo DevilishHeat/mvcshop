@@ -9,33 +9,37 @@ class controller_registration extends controller
 
     public function action_index()
     {
-        $this->view->generate('view_registration.php', 'view_template.php');
-    }
-
-    public function action_create_user()
-    {
-        if ($_POST['password'] == $_POST['password_repeat'])
+      if ($_POST['password'] == $_POST['password_repeat'])
+      {
+        if ($this->model->username_available())
         {
-            if ($this->model->username_available())
-            {
-                if ($this->model->email_available())
-                {
-                    if ($this->model->create_user())
-                    {
-                        header('Location: http://mvcshop.com/registration/complete');
-                        die;
-                    }
-                }
-            }
-        }else
+          if ($this->model->email_available())
+          {
+            $json = $this->model->create_user();
+            return json_encode($json);
+          } else
+          {
+            $json = [
+              'status'=>400,
+              'message'=>'Почтовый ящик занят'
+            ];
+            return json_encode($json);
+          }
+        } else
         {
-            $_SESSION['message'] = 'Пароли не совпадают';
+          $json = [
+            'status'=>400,
+            'message'=>'Пользователь с таким именем уже существует'
+          ];
+          return json_encode($json);
         }
-        header('Location: http://mvcshop.com/registration');
-        die;
-    }
-    public function action_complete()
-    {
-        $this->view->generate('view_registration_complete.php', 'view_template.php');
+      } else
+      {
+        $json = [
+          'status'=>400,
+          'message'=>'Пароли не совпадают'
+        ];
+        return json_encode($json);
+      }
     }
 }

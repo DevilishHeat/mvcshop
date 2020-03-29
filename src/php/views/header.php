@@ -22,6 +22,9 @@ if (!isset($_SESSION['username']))
 					<div class="col-9 d-flex">
 						<div class="header-top__user-actions user-actions">
 							<div class="user-actions__list">
+                <?php
+
+                ?>
 								<div class="user-actions__item">
 									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#authorization">Войти</button>
 								</div>
