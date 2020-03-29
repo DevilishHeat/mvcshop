@@ -1,8 +1,11 @@
-<div id="autorization" aria-labelledby="Форма авторизации" class="modal" tabindex="-1" role="dialog">
+<div id="authorization" aria-labelledby="Форма авторизации" class="modal" tabindex="-1" role="dialog">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header flex-column">
         <h5 class="modal-title text-info">Авторизация</h5>
+
+        <div class="modal-alert alert alert-danger my-3 mx-auto" hidden  role="alert"></div>
+
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -20,6 +23,8 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Войти</button>
+
+        <p></p>
       </form>
       </div>
     </div>

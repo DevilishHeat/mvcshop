@@ -23,7 +23,7 @@ if (!isset($_SESSION['username']))
 						<div class="header-top__user-actions user-actions">
 							<div class="user-actions__list">
 								<div class="user-actions__item">
-									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#autorization">Войти</button>
+									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#authorization">Войти</button>
 								</div>
 								<div class="user-actions__item">
 									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registration">Регистрация</button>
