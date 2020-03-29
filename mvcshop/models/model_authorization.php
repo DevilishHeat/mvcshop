@@ -16,20 +16,20 @@ class model_authorization extends model
           if ($user['password'] == $_POST['password'])
           {
             return array(
-                'status'=> '200',
+                'status'=> 200,
                 'username'=>$user['username']
             );
           } else
           {
             return array(
-                'status'=> '400',
+                'status'=> 400,
                 'message'=>'Неверный пароль'
             );
           }
         } else
         {
           return array(
-              'status'=> '400',
+              'status'=> 400,
               'message'=>'Пользователя с таким именем не существует'
           );
         }
