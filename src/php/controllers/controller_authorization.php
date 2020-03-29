@@ -10,6 +10,10 @@ class controller_authorization extends controller
     public function action_index()
     {
       $json = $this->model->authorization();
+      if ($json['status'] == 200)
+      {
+        $_SESSION['username'] = $json['username'];
+      }
       header('Content-Type: application/json');
       echo json_encode($json, JSON_UNESCAPED_UNICODE);
       /*echo implode(" ", $this->model->authorization());*/
