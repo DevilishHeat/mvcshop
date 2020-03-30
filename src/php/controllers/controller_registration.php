@@ -9,6 +9,7 @@ class controller_registration extends controller
 
     public function action_index()
     {
+      header('Content-Type: application/json');
       if ($_POST['password'] == $_POST['password_repeat'])
       {
         if ($this->model->username_available())
@@ -16,30 +17,30 @@ class controller_registration extends controller
           if ($this->model->email_available())
           {
             $json = $this->model->create_user();
-            return json_encode($json);
+            echo json_encode($json,JSON_UNESCAPED_UNICODE);
           } else
           {
-            $json = [
+            $json = array(
               'status'=>400,
               'message'=>'Почтовый ящик занят'
-            ];
-            return json_encode($json);
+            );
+            echo json_encode($json,JSON_UNESCAPED_UNICODE);
           }
         } else
         {
-          $json = [
+          $json = array(
             'status'=>400,
             'message'=>'Пользователь с таким именем уже существует'
-          ];
-          return json_encode($json);
+          );
+          echo json_encode($json,JSON_UNESCAPED_UNICODE);
         }
       } else
       {
-        $json = [
-          'status'=>400,
-          'message'=>'Пароли не совпадают'
-        ];
-        return json_encode($json);
+        $json = array(
+          'status' => 400,
+          'message' => 'Пароли не совпадают'
+        );
+        echo json_encode($json,JSON_UNESCAPED_UNICODE);
       }
     }
 }

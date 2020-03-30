@@ -20,9 +20,6 @@
 			</div>
 			<main class="body__content container pt-5 pb-5">
 				<div class="row">
-					<div class="col-3">
-						<?php include 'views/view_sidebar.php'?>
-					</div>
 					<div class="col-9">
 						<?php include 'views/'.$content_view; ?>
 					</div>

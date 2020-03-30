@@ -23,8 +23,10 @@ if (!isset($_SESSION['username']))
 						<div class="header-top__user-actions user-actions">
 							<div class="user-actions__list">
                 <?php
-
+                if (isset($_SESSION['username'])):
                 ?>
+
+                <?php else: ?>
 								<div class="user-actions__item">
 									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#authorization">Войти</button>
 								</div>
@@ -32,9 +34,9 @@ if (!isset($_SESSION['username']))
 									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registration">Регистрация</button>
 								</div>
 								<div class="user-actions__item">
-                  <a href="cart">Корзина</a>
-										<!--<button class="btn btn-danger">	Корзина <span class="badge badge-light">10</span></button>-->
+										<a class="btn btn-danger" href="cart">	Корзина <span class="badge badge-light">10</span></a>
 								</div>
+                <?php endif; ?>
 							</div>
 						</div>
 					</div>
@@ -54,29 +56,7 @@ if (!isset($_SESSION['username']))
 			</div>
 		</div>
 	</div>
-	<!-- <?php
-                if ($_SESSION['authorization']):
-                    echo 'Вход выполнен<br>' . $_SESSION['username'] ?>
-                    <form action="../authorization/logout" method="post">
-                        <input type="hidden" name="location" value="<?= $_SERVER['REQUEST_URI'] ?>">
-                        <input type="submit" value="Выход">
-                    </form>
-                <?php else: ?>
-                    <form action="../authorization" method="post">
-                        <div>
-                            <label for="auth_user">Имя пользователя</label> <br>
-                            <input type="text" name="username" id="auth_user">
-                        </div>
-                        <div>
-                            <label for="auth_password">Пароль</label> <br>
-                            <input type="password" name="password" id="auth_password"><br>
-                        </div>
-                        <input type="hidden" name="location" value="<?= $_SERVER['REQUEST_URI'] ?>">
-                        <?= 'SESSION_MESSAGE:' . $_SESSION['message'] ?><br>
-                        <input type="submit" value="Войти">
-                    </form>
-                    <a href="registration">Регистрация</a>
-                <?php endif; ?> -->
+
 </header>
 
 <?php
