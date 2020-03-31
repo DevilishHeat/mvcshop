@@ -12,7 +12,8 @@ class Route
         // получаем имя контроллера
         if ( !empty($routes[1]) )
         {
-            $controller_name = $routes[1];
+          $controller_part = explode('?', $routes[1]);
+          $controller_name = $controller_part[0];
         }
 
         // получаем имя экшена

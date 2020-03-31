@@ -75,6 +75,7 @@
 </table>
 
 <?php
+//Вывод сообщения, что корзина пуста
 else:
   echo "<div align='center'>$data</div>";
 endif;
