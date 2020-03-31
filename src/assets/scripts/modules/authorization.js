@@ -16,6 +16,7 @@ export default () => {
       data,
       dataType: 'json',
       success: function(data) {
+        console.log('success', data);
         let { status, message } = data;
         console.log(data);
 

@@ -11,22 +11,22 @@
       <form class="js-registration">
         <div class="form-group">
           <label for="RegLogin">Имя пользователя:</label>
-          <input type="text" class="form-control" id="RegLogin" aria-describedby="Поле для ввода логина" required>
+          <input type="text" class="form-control" id="RegLogin" name="username" aria-describedby="Поле для ввода логина" required>
         </div>
 
         <div class="form-group">
           <label for="RegEmail">Электронная почта:</label>
-          <input type="email" class="form-control" id="RegEmail" aria-describedby="Поле для ввода адреса электронной почтчы" required>
+          <input type="email" class="form-control" id="RegEmail" name="email" aria-describedby="Поле для ввода адреса электронной почтчы" required>
         </div>
 
         <div class="form-group">
           <label for="RegPassword">Пароль:</label>
-          <input type="password" class="form-control" id="RegPassword" aria-describedby="Поле для ввода пароля" required>
+          <input type="password" class="form-control" id="RegPassword" name="password" aria-describedby="Поле для ввода пароля" required>
         </div>
 
         <div class="form-group">
           <label for="repeatRegPassword">Повторите пароль:</label>
-          <input type="password" class="form-control" id="repeatRegPassword" aria-describedby="Поле для повторного ввода пароля" data-compate-target="RegPassword" required>
+          <input type="password" class="form-control" id="repeatRegPassword" name="password_repeat" aria-describedby="Поле для повторного ввода пароля" data-compare-target="RegPassword" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Зарегистироваться</button>
