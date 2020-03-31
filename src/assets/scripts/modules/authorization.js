@@ -16,15 +16,13 @@ export default () => {
       data,
       dataType: 'json',
       success: function(data) {
-        console.log(data);
         let { status, message } = data;
+        console.log(data);
 
-        /* 
         if (status === 200) {
-          ...
+          location.reload();
+          return;
         }
-        
-        */
 
         if (status === 400) {
           $alert.text(message).removeAttr('hidden');

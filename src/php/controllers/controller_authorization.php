@@ -9,7 +9,11 @@ class controller_authorization extends controller
 
     public function action_index()
     {
-      $json = $this->model->authorization();
+      //$json = $this->model->authorization();
+      $json = array(
+        'status'=> '400',
+        'message'=>session_id()
+      );
       if ($json['status'] == 200)
       {
         $_SESSION['username'] = $json['username'];

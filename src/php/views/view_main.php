@@ -40,17 +40,3 @@
     </div>
 	</div>
 </section>
-
-<!-- <table width="100%">
-    <tr>
-        <td>
-            Каталог:
-        </td>
-        <td align="right">
-            <form action="search" method="get">
-                <label for="request">Поиск:</label>
-                <input type="text" id="request" name="search_request">
-            </form>
-        </td>
-    </tr>
-</table> -->

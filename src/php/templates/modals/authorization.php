@@ -24,7 +24,6 @@
 
         <button type="submit" class="btn btn-primary">Войти</button>
 
-        <p></p>
       </form>
       </div>
     </div>

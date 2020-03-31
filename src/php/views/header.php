@@ -1,13 +1,9 @@
-<!-- <?php
-if (!isset($_SESSION['username']))
-{
-    $_SESSION['authorization'] = 0;
-} else
-{
-    $_SESSION['authorization'] = 1;
-}
-?> -->
+<?php
+//var_dump($_SESSION);
+echo session_id();
+?>
 <header class="header">
+
 	<div class="header__wrapper">
     <div class="header__header-top header-top">
 			<div class="header-top__wrapper container">
@@ -25,8 +21,12 @@ if (!isset($_SESSION['username']))
                 <?php
                 if (isset($_SESSION['username'])):
                 ?>
-
+                Вы вошли как: <?= $_SESSION['username'] ?>
+                <div class="user-actions__item">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#logout">Выйти</button>
+                </div>
                 <?php else: ?>
+                <?= $_SESSION['username'] ?>
 								<div class="user-actions__item">
 									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#authorization">Войти</button>
 								</div>
@@ -60,6 +60,6 @@ if (!isset($_SESSION['username']))
 </header>
 
 <?php
-	includeTemplate('/templates/modals/authorization.php');
-	includeTemplate('/templates/modals/registration.php');
+  includeTemplate('/templates/modals/authorization.php');
+  includeTemplate('/templates/modals/registration.php');
 ?>

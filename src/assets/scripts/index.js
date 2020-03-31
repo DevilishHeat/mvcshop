@@ -1,9 +1,9 @@
 import 'svgxuse';
 import objectFitImages from './polyfills/objectFitImages';
 
-import autorization from './modules/authorization';
+import authorization from './modules/authorization';
 import registration from './modules/registration';
 
 objectFitImages();
-autorization();
+authorization();
 registration();
