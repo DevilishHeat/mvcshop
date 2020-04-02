@@ -1,24 +1,22 @@
 export default () => {
-  const API = 'authorization';
-
-  let $modal = $(`#${API}`);
-  let $form = $(`.js-${API}`);
+  const controller = 'authorization';
+  let $modal = $('#authorization');
+  let $form = $(`.js-${controller}`);
   let $submitBtn = $form.find('button[type="submit"]');
   let $alert = $modal.find('.alert-danger');
 
-  $submitBtn.off(`click.${API}`).on(`click.${API}`, event => {
+  $submitBtn.off(`click.${controller}`).on(`click.${controller}`, event => {
     event.preventDefault();
     let data = $form.serializeArray();
 
     $.ajax({
       type: 'POST',
-      url: `http://mvcshop.com/${API}`,
+      url: `http://${location.host}/${controller}`,
       data,
       dataType: 'json',
       success: function(data) {
         console.log('success', data);
         let { status, message } = data;
-        console.log(data);
 
         if (status === 200) {
           location.reload();

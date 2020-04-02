@@ -1,7 +1,3 @@
-<?php
-//var_dump($_SESSION);
-echo session_id();
-?>
 <header class="header">
 
 	<div class="header__wrapper">
@@ -21,9 +17,11 @@ echo session_id();
                 <?php
                 if (isset($_SESSION['username'])):
                 ?>
-                Вы вошли как: <?= $_SESSION['username'] ?>
                 <div class="user-actions__item">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#logout">Выйти</button>
+                  Вы вошли как: <?= $_SESSION['username'] ?>
+                </div>
+                <div class="user-actions__item">
+                  <button type="button" class="btn btn-primary logout" >Выйти</button>
                 </div>
                 <?php else: ?>
                 <?= $_SESSION['username'] ?>
