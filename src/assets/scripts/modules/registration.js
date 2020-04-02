@@ -1,34 +1,34 @@
 export default () => {
-  const API = 'registration';
+  const controller = 'registration';
 
-  let $modal = $(`#${API}`);
-  let $form = $(`.js-${API}`);
+  let $modal = $(`#${controller}`);
+  let $form = $(`.js-${controller}`);
   let $submitBtn = $form.find('button[type="submit"]');
-  let $alert = $modal.find('.alert-danger');
+  let $success = $modal.find('.alert-success');
+  let $danger = $modal.find('.alert-danger');
 
-  $submitBtn.off(`click.${API}`).on(`click.${API}`, event => {
+  $submitBtn.off(`click.${controller}`).on(`click.${controller}`, event => {
     event.preventDefault();
     let data = $form.serializeArray();
-    console.log(data);
 
     $.ajax({
       type: 'POST',
-      url: `http://mvcshop.com/${API}`,
+      url: `http://mvcshop.com/${controller}`,
       data,
       dataType: 'json',
       success: function(data) {
         console.log('success', data);
         let { status, message } = data;
+        $success.attr('hidden', true);
+        $danger.attr('hidden', true);
 
-        /*
         if (status === 200) {
-          ...
+          $success.text(message).removeAttr('hidden');
+          return;
         }
 
-        */
-
         if (status === 400) {
-          $alert.text(message).removeAttr('hidden');
+          $danger.text(message).removeAttr('hidden');
           return;
         }
       },

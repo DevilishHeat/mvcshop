@@ -8,6 +8,10 @@
         </button>
       </div>
       <div class="modal-body">
+
+        <div class="modal-alert alert alert-danger my-3 mx-auto" hidden  role="alert"></div>
+        <div class="modal-alert alert alert-success my-3 mx-auto" hidden  role="alert"></div>
+
       <form class="js-registration">
         <div class="form-group">
           <label for="RegLogin">Имя пользователя:</label>

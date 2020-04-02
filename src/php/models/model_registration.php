@@ -42,12 +42,12 @@ class model_registration extends model
           ':password'=>$_POST['password'])))
         {
           return array(
-            'status'=>200,
-            'username'=>$_POST['username']
+            'status'=> 200,
+            'message'=>'Регистрация прошла успешно'
           );
         }
         return array(
-          'status'=>400,
+          'status'=> 400,
           'message'=> 'Проблемы с подключением к базе данных',
         );
     }
