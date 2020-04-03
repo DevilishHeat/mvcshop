@@ -32,7 +32,7 @@
 									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registration">Регистрация</button>
 								</div>
 								<div class="user-actions__item">
-										<a class="btn btn-danger" href="cart">	Корзина <span class="badge badge-light">10</span></a>
+										<a class="btn btn-danger" href="cart">	Корзина <span class="badge badge-light items-counter"><?= isset($_SESSION['cart']) ? count($_SESSION['cart']) : "" ?></span></a>
 								</div>
                 <?php endif; ?>
 							</div>

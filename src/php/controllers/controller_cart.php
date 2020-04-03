@@ -40,6 +40,7 @@ class controller_cart extends controller
     }
     $json = array(
       'status'=> 200,
+      'quantity' => count($_SESSION['cart'])
     );
     header('Content-Type: application/json');
     echo json_encode($json);

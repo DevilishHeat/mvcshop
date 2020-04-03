@@ -13,6 +13,9 @@ export default () => {
           url: `http://${location.host}/${controller}/${action}`,
           data,
           success: function(data) {
+            let { status, quantity } = data;
+            let $counter = $('.items-counter');
+            $counter.text(quantity);
             console.log('success', data);
           },
           error: function(data) {
