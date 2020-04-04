@@ -48,13 +48,17 @@ class controller_cart extends controller
 
   public function action_delete_item()
   {
-    unset($_SESSION['cart'][$_GET['id']]);
+    $json = array(
+      'status'=> 200,
+      'quantity'=> count($_SESSION['cart']) - 1,
+    );
+    unset($_SESSION['cart'][$_POST['id']]);
     if (count($_SESSION['cart']) == 0)
     {
       unset($_SESSION['cart']);
     }
-    header('Location: http://mvcshop.com/cart');
-    die();
+    header('Content-Type: application/json');
+    echo json_encode($json);
   }
 
   public function action_create_order()

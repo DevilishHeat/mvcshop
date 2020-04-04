@@ -1,5 +1,5 @@
 <?php if(isset($_SESSION['cart'])): ?>
-<table class="table" border="2">
+<table class="table cart-table" border="2">
   <thead class="thead-dark">
   <tr>
     <th scope="col">
@@ -19,7 +19,7 @@
   <form action="cart/create_order" method="post">
     <tbody>
     <?php foreach ($data as $item): ?>
-      <tr>
+      <tr class="item">
         <td>
           <img src="<?= $this->images . $item['name'] . '.jpg' ?>" height="50">
         </td>
@@ -48,7 +48,7 @@
           </div>
         </td>
         <td>
-          <a href="cart/delete_item?id=<?= $item['item_id'] ?>">X</a>
+          <button type="button" class="btn btn-primary js-delete_item" value="<?= $item['item_id'] ?>">X</button>
         </td>
       </tr>
     <?php

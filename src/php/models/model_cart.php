@@ -3,16 +3,16 @@ class model_cart extends model
 {
   public function get_data()
   {
-    $this->set_dsn();
-    $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
-    $stmt = $dbh->prepare(
-      "
+    if (isset($_SESSION['cart']))
+    {
+      $this->set_dsn();
+      $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
+      $stmt = $dbh->prepare(
+        "
       SELECT * FROM items
       WHERE item_id = :id
       ");
-    $data = array();
-    if (isset($_SESSION['cart']))
-    {
+      $data = array();
       foreach ($_SESSION['cart'] as $id => $quantity)
       {
         $stmt->execute(array(':id'=>$id));

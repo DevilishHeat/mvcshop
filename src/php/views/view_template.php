@@ -20,7 +20,7 @@
 			</div>
 			<main class="body__content container pt-5 pb-5">
 				<div class="row">
-					<div class="col-12">
+					<div class="col-12 content_view">
 						<?php include 'views/'.$content_view; ?>
 					</div>
 				</div>
