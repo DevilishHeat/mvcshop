@@ -1,22 +1,23 @@
 <?php if(isset($_SESSION['cart'])): ?>
-<table class="table cart-table" border="2">
-  <thead class="thead-dark">
-  <tr>
-    <th scope="col">
-      #
-    </th>
-    <th scope="col">
-      Товар
-    </th>
-    <th scope="col">
-      Цена
-    </th>
-    <th scope="col" colspan="2">
-      Количество
-    </th>
-  </tr>
-  </thead>
-  <form action="cart/create_order" method="post">
+  <form class="js-cart">
+    <table class="table cart-table" border="2">
+      <thead class="thead-dark">
+      <tr>
+      <th scope="col">
+        #
+      </th>
+      <th scope="col">
+        Товар
+      </th>
+      <th scope="col">
+        Цена
+      </th>
+      <th scope="col" colspan="2">
+       Количество
+      </th>
+    </tr>
+    </thead>
+
     <tbody>
     <?php foreach ($data as $item): ?>
       <tr class="item">
@@ -30,8 +31,8 @@
           <?= $item['price'] ?>
         </td>
         <td>
-          <div class="form-group">
-            <select class="form-controll" name="quantity<?= $item['item_id'] ?>">
+          <div>
+            <select class="quantity_selector" name="quantity<?= $item['item_id'] ?>">
               <?php
               for($i = 1; $i <= $item['quantity']; $i++)
               {
@@ -63,16 +64,14 @@
         <?= $total_price ?>
       </td>
       <td>
-        <input type="hidden" name="total_price" value="<?= $total_price ?>">
-        <button type="submit" class="btn btn-primary">
-          Заказать
-        </button>
+        <input type="hidden" class="form-control" name="username" value="<?= isset($_SESSION['username']) ? $_SESSION['username'] : '' ?>">
+        <input type="hidden" class="form-control" name="total_price" value="<?= $total_price ?>">
+        <button type="button" class="btn btn-primary create_order">Заказать</button>
       </td>
     </tr>
     </tbody>
-
+  </table>
   </form>
-</table>
 
 <?php
 //Вывод сообщения, что корзина пуста

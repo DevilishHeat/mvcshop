@@ -29,11 +29,22 @@ class model_cart extends model
     $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
     $stmt = $dbh->prepare(
       "
+      SELECT user_id FROM users
+      WHERE username = :username"
+    );
+    $stmt->execute(array(
+      ':username'=> $_POST['username']
+    ));
+    $user_id = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $dbh->prepare(
+      "
       INSERT INTO orders (user_id, total_price)
-      VALUES (1, :total_price)
+      VALUES (:user_id, :total_price)
       ");
-    $stmt->execute(array(':total_price'=>$_POST['total_price']));
-    //После исправления авторизации будуд разные пользователи
+    $stmt->execute(array(
+      ':user_id'=> $user_id['user_id'],
+      ':total_price'=> $_POST['total_price'],
+    ));
     $order_id = $dbh->lastInsertId();
     $stmt = $dbh->prepare(
       "

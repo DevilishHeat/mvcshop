@@ -68,3 +68,50 @@ export function delete_item() {
     });
   }
 }
+
+export function create_order() {
+  const controller = 'cart';
+  const action = 'create_order';
+  let $form = $(`.js-${controller}`);
+  let $submitBtn = $form.find('.create_order');
+  if ($form.length) {
+    $submitBtn.off(`click.${action}`).on(`click.${action}`, event => {
+      event.preventDefault();
+      if ($form.find('input[name=username]').val() === '') {
+        $('.content_view').append(
+          $('<div>', {
+            align: 'center',
+            class: 'alert alert-danger',
+            text: 'Для отправки заказа необходимо авторизоваться',
+          }),
+        );
+      } else {
+        let data = $form.serializeArray();
+        $.ajax({
+          type: 'POST',
+          url: `http://${location.host}/${controller}/${action}`,
+          data,
+          dataType: 'json',
+          success: function(data) {
+            console.log('success', data);
+            let { status, message } = data;
+            $('.cart-table').remove();
+            $('.content_view').append(
+              $('<div>', {
+                align: 'center',
+                text: message,
+              }),
+            );
+          },
+          error: function(data) {
+            console.log('error', data);
+          },
+        });
+      }
+    });
+  }
+}
+
+export function total_price_calculation() {
+
+}

@@ -65,7 +65,11 @@ class controller_cart extends controller
   {
     $this->model->create_order();
     unset($_SESSION['cart']);
-    header('Location: http://mvcshop.com');
-    die();
+    $json = array(
+      'status'=> 200,
+      'message'=> 'Ваш заказ успешно отправлен на обработку.'
+    );
+    header('Content-Type: application/json');
+    echo json_encode($json);
   }
 }

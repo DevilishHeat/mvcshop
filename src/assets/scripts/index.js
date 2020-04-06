@@ -11,3 +11,5 @@ authorization.logout();
 registration();
 cart.add_item();
 cart.delete_item();
+cart.create_order();
+cart.total_price_calculation();
