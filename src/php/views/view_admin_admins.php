@@ -84,5 +84,4 @@ foreach ($data as $admin):
         </tr>
     </table>
 </form>
-<?= $_SESSION['message'] ?>
 

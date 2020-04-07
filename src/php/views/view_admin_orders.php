@@ -34,5 +34,4 @@ $current_order_id = 0;
   </tr>
   <?php endforeach; ?>
   </tbody>
-
 </table>

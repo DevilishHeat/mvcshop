@@ -19,9 +19,16 @@ class model_admin extends model
         if (isset($admin['login']))
         {
             $_SESSION['admin'] = $admin['login'];
+            return array(
+              'status'=>200,
+              'message'=> $admin['login'] . ' успешно авторизован',
+            );
         } else
         {
-            $_SESSION['message'] = 'Введены неверные данные';
+            return array(
+              'status'=>400,
+              'message'=> 'Введенны неверные данные'
+            );
         }
     }
 }

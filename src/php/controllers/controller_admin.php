@@ -20,16 +20,18 @@ class controller_admin extends controller
     }
     public function action_authorization()
     {
-        $this->model->authorization();
-        header('Location: http://mvcshop.com/admin');
-        die();
+        $json = $this->model->authorization();
+        header('Content-Type: application/json');
+        echo json_encode($json);
     }
 
     public function action_logout()
     {
         unset($_SESSION['admin']);
-        header('Location: http://mvcshop.com/admin');
-        die();
+        $json = array(
+          'status'=> 200,
+        );
+        echo json_encode($json);
     }
 
 }

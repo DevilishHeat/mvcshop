@@ -1,14 +1,29 @@
-<div align="center">
-    <form action="admin/authorization" method="post">
-        <div>
-            <label for="auth_admin">Логин</label> <br>
-            <input type="text" name="login" id="auth_admin">
+<div class="col-auto d-flex justify-content-center">
+  <form class="js-admin_authorization">
+    <div class="form-group row">
+      <div class="col-auto">
+        <div class="text-center">
+          <label for="auth_admin">Логин</label>
         </div>
-        <div>
-            <label for="auth_password">Пароль</label> <br>
-            <input type="password" name="password" id="auth_password"><br>
+        <input class="form-control" type="text" name="login" id="auth_admin">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-auto">
+        <div class="text-center">
+          <label for="auth_password">Пароль</label>
         </div>
-        <?= 'SESSION_MESSAGE:' . $_SESSION['message'] ?><br>
-        <input type="submit" value="Войти">
-    </form>
+        <input class="form-control" type="password" name="password" id="auth_password"><br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="text-center">
+        <button type="button" class="authorization btn btn-primary">Войти</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="alert alert-danger m-3"  hidden role="alert"></div>
+    </div>
+  </form>
 </div>
+
