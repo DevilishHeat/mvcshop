@@ -72,4 +72,14 @@ class controller_cart extends controller
     header('Content-Type: application/json');
     echo json_encode($json);
   }
+
+  public function action_change_item_quantity()
+  {
+    $_SESSION['cart'][$_POST['item_id']] = $_POST['quantity'];
+    $json = array(
+      'status'=>200,
+    );
+    header('Content-Type: application/json');
+    echo json_encode($json);
+  }
 }

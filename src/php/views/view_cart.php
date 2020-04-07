@@ -27,12 +27,13 @@
         <td>
           <?= $item['name'] ?>
         </td>
-        <td>
+        <td class="price">
           <?= $item['price'] ?>
         </td>
         <td>
           <div>
-            <select class="quantity_selector" name="quantity<?= $item['item_id'] ?>">
+            <div hidden class="item_id"><?= $item['item_id'] ?></div>
+            <select class="quantity_selector form-control" name="quantity<?= $item['item_id'] ?>">
               <?php
               for($i = 1; $i <= $item['quantity']; $i++)
               {
@@ -61,7 +62,7 @@
       <td></td>
       <td>Сумма:</td>
       <td>
-        <?= $total_price ?>
+        <input type="text" class="form-control total_price" name="total_price" value="<?= $total_price ?>" readonly size="10" tabindex="-1" style="pointer-events: none;">
       </td>
       <td>
         <input type="hidden" class="form-control" name="username" value="<?= isset($_SESSION['username']) ? $_SESSION['username'] : '' ?>">
