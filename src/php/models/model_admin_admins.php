@@ -23,10 +23,19 @@ class model_admin_admins extends model
             ':login'=>$_POST['login'],
             ':password'=>$_POST['password'])))
         {
-            return true;
+          $new_admin_id = $dbh->lastInsertId();
+          return array(
+            'status'=> 200,
+            'message'=> 'Учётная запись создана',
+            'login'=> $_POST['login'],
+            'password'=> $_POST['password'] == '' ? true : false,
+            'admin_id'=> $new_admin_id,
+          );
         }
-        $_SESSION['message'] = 'проблемы с подключением к базе данных';
-        return false;
+        return array(
+          'status' => 400,
+          'message'=> 'Проблемы с подключением к базе данных',
+        );
     }
 
     public function delete_admin()

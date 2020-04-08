@@ -12,7 +12,7 @@
     </th>
   </tr>
   </thead>
-  <tbody>
+  <tbody class="admins">
 <?php
 foreach ($data as $admin):
 ?>
@@ -42,7 +42,7 @@ foreach ($data as $admin):
 <?php endforeach; ?>
   </tbody>
 </table>
-<form action="admin_admins/create_admin" method="post">
+<form class="js-create_admin">
     <br>
     <table class="table" width="50%" border="1">
         <thead class="thead-dark" align="center">
@@ -59,22 +59,22 @@ foreach ($data as $admin):
                 <label for="password_repeat">Повторите пароль</label>
             </td>
           <td>
+            <div class="alert alert-danger" hidden></div>
           </td>
         </tr>
         <tr>
             <td>
-                <input type="text" name="login" id="login">
+                <input type="text" name="login" id="login" class="form-control">
             </td>
             <td>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password" id="password" class="form-control">
             </td>
             <td>
-                <input type="password" name="password_repeat" id="password_repeat">
+                <input type="password" name="password_repeat" id="password_repeat" class="form-control">
             </td>
             <td>
-                <input type="submit" value="Создать">
+                <button type="button" class="btn btn-primary create_admin">Создать</button>
             </td>
         </tr>
     </table>
 </form>
-

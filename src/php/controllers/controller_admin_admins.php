@@ -17,14 +17,17 @@ class controller_admin_admins extends controller
     {
         if ($_POST['password'] == $_POST['password_repeat'] and $_POST['login'] != '')
         {
-            $this->model->create_admin();
-            header('Location: http://mvcshop.com/admin_admins');
-            die();
+            $json = $this->model->create_admin();
+            header('Content-Type: application/json');
+            echo json_encode($json);
         } else
         {
-            $_SESSION['message'] = 'Введенны недопустимые данные';
-            header('Location: http://mvcshop.com/admin_admins');
-            die();
+          $json = array(
+            'status'=> 400,
+            'message'=> 'Вевведены некорректные данные'
+          );
+          header('Content-Type: application/json');
+          echo json_encode($json);
         }
     }
 
@@ -33,11 +36,6 @@ class controller_admin_admins extends controller
       $json = $this->model->delete_admin();
       header('Content-Type: application/json');
       echo json_encode($json);
-    }
-
-    public function action_change_password()
-    {
-      $this->view->generate('view_admin_admins_change_password.php', 'view_template_admin.php');
     }
 
     public function action_update_password()
