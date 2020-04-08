@@ -27,9 +27,6 @@ class model_admin_admins extends model
           return array(
             'status'=> 200,
             'message'=> 'Учётная запись создана',
-            'login'=> $_POST['login'],
-            'password'=> $_POST['password'] == '' ? true : false,
-            'admin_id'=> $new_admin_id,
           );
         }
         return array(
