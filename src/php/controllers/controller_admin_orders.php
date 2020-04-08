@@ -16,7 +16,11 @@ class controller_admin_orders extends controller
   public function action_delete_order()
   {
     $this->model->delete_order();
-    header('Location: http://mvcshop.com/admin_orders');
-    die();
+    $json = array(
+      'status'=>200,
+      'order_id'=> $_POST['order_id'],
+    );
+    header('Content-type: application/json');
+    echo json_encode($json);
   }
 }

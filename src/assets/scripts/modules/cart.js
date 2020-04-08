@@ -4,7 +4,7 @@ export function add_item() {
   if ($(`.js-${action}`).length) {
     $(`.js-${action}`).each(function(index) {
       let $add_item_button = $(this);
-      $add_item_button.off(`click.${action}`).on(`click.${action}`, event => {
+      $add_item_button.on('click', event => {
         event.preventDefault();
         let data = { id: $add_item_button.attr('value') };
         $.ajax({
@@ -34,7 +34,7 @@ export function delete_item() {
       let $item = $(this);
       let $price = $item.find('.price').text();
       let $button = $item.find(`.js-${action}`);
-      $button.off(`click.${action}`).on(`click.${action}`, event => {
+      $button.on('click', event => {
         event.preventDefault();
         let $quantity = $item.find('.quantity_selector').val();
         let data = { id: $button.attr('value') };
@@ -78,7 +78,7 @@ export function create_order() {
   let $form = $(`.js-${controller}`);
   let $submitBtn = $form.find('.create_order');
   if ($form.length) {
-    $submitBtn.off(`click.${action}`).on(`click.${action}`, event => {
+    $submitBtn.on('click', event => {
       event.preventDefault();
       if ($form.find('input[name=username]').val() === '') {
         $('.content_view').append(
@@ -120,30 +120,33 @@ export function total_price_calculation() {
   const action = 'change_item_quantity';
   let $items = $('.item');
   let $total_price = $('.total_price');
-  $items.each(function() {
-    let $item = $(this);
-    let $selector = $item.find('.quantity_selector');
-    let $price = $item.find('.price');
-    let $old_quantity = $selector.val();
-    let $item_id = $item.find('.item_id').text();
-    $selector.change(function() {
-      let data = { item_id: $item_id, quantity: $selector.val() };
-      $.ajax({
-        type: 'POST',
-        url: `http://${location.host}/${controller}/${action}`,
-        data,
-        dataType: 'json',
-        success: function(data) {
-          console.log('success', data);
-        },
-        error: function(data) {
-          console.log('error', data);
-        },
+  if ($items.length) {
+    $items.each(function() {
+      let $item = $(this);
+      let $selector = $item.find('.quantity_selector');
+      let $price = $item.find('.price');
+      let $old_quantity = $selector.val();
+      let $item_id = $item.find('.item_id').text();
+      $selector.change(function() {
+        let data = { item_id: $item_id, quantity: $selector.val() };
+        $.ajax({
+          type: 'POST',
+          url: `http://${location.host}/${controller}/${action}`,
+          data,
+          dataType: 'json',
+          success: function(data) {
+            console.log('success', data);
+          },
+          error: function(data) {
+            console.log('error', data);
+          },
+        });
+        $total_price.val(
+          +$total_price.val() +
+            $price.text() * ($selector.val() - $old_quantity),
+        );
+        $old_quantity = $selector.val();
       });
-      $total_price.val(
-        +$total_price.val() + $price.text() * ($selector.val() - $old_quantity),
-      );
-      $old_quantity = $selector.val();
     });
-  });
+  }
 }

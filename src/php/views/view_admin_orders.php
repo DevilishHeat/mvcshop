@@ -12,14 +12,14 @@ $current_order_id = 0;
   <?php foreach ($data as $order):
     if ($current_order_id != $order['order_id']):
   ?>
-  <tr>
+  <tr class="order_<?= $order['order_id'] ?>">
     <td><strong><?= $order['username'] ?></strong></td>
     <td><strong><?= $order['order_id'] ?></strong></td>
     <td><strong><?= $order['total_price'] ?></strong></td>
     <td>
-      <form action="admin_orders/delete_order" method="post">
-        <input type="hidden" name="id" value="<?= $order['order_id'] ?>">
-        <button type="submit" class="btn btn-primary">X</button>
+      <form class="js-delete_order">
+        <input type="hidden" name="order_id" value="<?= $order['order_id'] ?>">
+        <button type="button" class="btn btn-primary delete_order">X</button>
       </form>
     </td>
   </tr>
@@ -27,7 +27,7 @@ $current_order_id = 0;
       $current_order_id = $order['order_id'];
       endif;
       ?>
-  <tr>
+  <tr class="order_<?= $order['order_id'] ?>">
     <td><?= $order['name'] ?></td>
     <td><?= $order['quantity'] ?></td>
     <td><?= $order['price'] ?></td>

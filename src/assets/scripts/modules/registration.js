@@ -7,7 +7,7 @@ export default () => {
   let $success = $modal.find('.alert-success');
   let $danger = $modal.find('.alert-danger');
 
-  $submitBtn.off(`click.${controller}`).on(`click.${controller}`, event => {
+  $submitBtn.on('click', event => {
     event.preventDefault();
     let data = $form.serializeArray();
 
@@ -24,12 +24,10 @@ export default () => {
 
         if (status === 200) {
           $success.text(message).removeAttr('hidden');
-          return;
         }
 
         if (status === 400) {
           $danger.text(message).removeAttr('hidden');
-          return;
         }
       },
       error: function(data) {

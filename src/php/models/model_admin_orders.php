@@ -34,8 +34,8 @@ class model_admin_orders extends model
     $stmt = $dbh->prepare(
       "
       DELETE FROM orders
-      WHERE order_id = :id
+      WHERE order_id = :order_id
       ");
-    $stmt->execute(array(':id'=>$_POST['id']));
+    $stmt->execute(array(':order_id'=>$_POST['order_id']));
   }
 }
