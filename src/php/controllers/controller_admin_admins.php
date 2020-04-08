@@ -30,15 +30,9 @@ class controller_admin_admins extends controller
 
     public function action_delete_admin()
     {
-      if ($_POST['login'] == $_SESSION['admin'])
-      {
-        $_SESSION['message'] = 'Нельзя удалить авторизованного пользователя';
-        header('Location: http://mvcshop.com/admin_admins');
-        die();
-      }
-        $this->model->delete_admin();
-        header('Location: http://mvcshop.com/admin_admins');
-        die();
+      $json = $this->model->delete_admin();
+      header('Content-Type: application/json');
+      echo json_encode($json);
     }
 
     public function action_change_password()

@@ -16,7 +16,7 @@
 <?php
 foreach ($data as $admin):
 ?>
-    <tr>
+    <tr class="admin">
         <td>
             <?= $admin['login'] ?>
         </td>
@@ -32,18 +32,11 @@ foreach ($data as $admin):
             ?>
         </td>
         <td>
-            <form action="admin_admins/change_password" method="post">
-                <input type="hidden" name="id" value="<?= $admin['admin_id'] ?>">
-                <input type="submit" value="Изменить пароль">
-            </form>
+          <button type="button" class="btn btn-primary change_password" value="<?= $admin['admin_id'] ?>">Изменить пароль</button>
         </td>
         <td>
-            <form action="admin_admins/delete_admin" method="post">
-                <input type="hidden" name="login" value="<?= $admin['login'] ?>">
-                <input type="hidden" name="id" value="<?= $admin['admin_id'] ?>">
-                <input type="submit" value="Удалить">
-                <?= '<br>' . $_SESSION['message'] ?>
-            </form>
+          <button type="button" value="<?= $admin['admin_id'] ?>" class="btn btn-primary delete_admin">X</button>
+          <div class="alert alert-danger" hidden></div>
         </td>
     </tr>
 <?php endforeach; ?>

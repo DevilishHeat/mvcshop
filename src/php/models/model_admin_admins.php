@@ -34,10 +34,28 @@ class model_admin_admins extends model
         $this->set_dsn();
         $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
         $stmt = $dbh->prepare("
+        SELECT login FROM admins
+        WHERE admin_id = :admin_id");
+        $stmt->execute(array(
+          'admin-id'=> $_POST['admin_id'],
+        ));
+        $login = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($login['login'] == $_SESSION['admin']) {
+          return array(
+            'status'=> 400,
+            'message'=> 'Нельзя удалить авторизованного пользователя'
+          );
+        } else {
+          $stmt = $dbh->prepare("
             DELETE FROM admins
-            WHERE admins.admin_id = :id
+            WHERE admins.admin_id = :admin_id
             ");
-        $stmt->execute(array(':id'=>$_POST['id']));
+          $stmt->execute(array(':admin_id'=>$_POST['admin_id']));
+          return array(
+            'status'=> 200,
+            'message'=> 'Админстратор удалён'
+          );
+        }
     }
 
     public function update_password()
