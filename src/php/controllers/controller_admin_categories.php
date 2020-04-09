@@ -16,8 +16,11 @@ class controller_admin_categories extends controller
   public function action_delete_category()
   {
     $this->model->delete_category();
-    header('Location: http://mvcshop.com/admin_categories');
-    die();
+    $json = array(
+      'status'=> 200,
+    );
+    header('Content-Type: application/json');
+    echo json_encode($json);
   }
 
   public function action_update_category()

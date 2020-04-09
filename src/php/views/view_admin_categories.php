@@ -7,19 +7,16 @@
   </thead>
   <tbody>
   <?php foreach ($data as $category): ?>
-    <tr>
+    <tr class="category">
       <td class="align-middle"><?= $category['category'] ?></td>
-      <td class="align-middle" align="center">
+      <td class="align-middle text-center">
         <form action="admin_categories/update_category" method="post">
           <input type="hidden" value="<?= $category['category_id'] ?>">
           <input type="submit" value="Изменить">
         </form>
       </td>
-      <td class="align-middle" align="center">
-        <form action="admin_categories/delete_category" method="post">
-          <input type="hidden" value="<?= $category['category_id'] ?>" name="id">
-          <input type="submit" value="Удалить">
-        </form>
+      <td class="align-middle text-center">
+        <button class="btn btn-primary delete_category" type="button" value="<?= $category['category_id'] ?>">X</button>
       </td>
     </tr>
   <?php endforeach; ?>

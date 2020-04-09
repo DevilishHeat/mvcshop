@@ -43,7 +43,6 @@ export function delete_admin() {
         event.preventDefault();
         let admin_id = $button.attr('value');
         let data = { admin_id: +admin_id };
-        console.log(data);
         $.ajax({
           type: 'POST',
           url: `http://${location.host}/${controller}/${action}`,
