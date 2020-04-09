@@ -22,3 +22,4 @@ admin_orders.delete_order();
 admin_admins.create_admin();
 admin_admins.change_password();
 admin_admins.delete_admin();
+admin_admins.modal_content();

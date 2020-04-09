@@ -38,26 +38,32 @@ class controller_admin_admins extends controller
       echo json_encode($json);
     }
 
-    public function action_update_password()
+    public function action_change_password()
     {
       if ($this->model->get_password() == $_POST['old_password'])
       {
-        if ($_POST['new_password'] == $_POST['password_repeat'])
+        if ($_POST['new_password'] == $_POST['repeat_password'])
         {
-          $this->model->update_password();
-          header('Location: http://mvcshop.com/admin_admins');
-          die();
+          $json = $this->model->update_password();
+          header('Content-Type: application/json');
+          echo json_encode($json);
         } else
         {
-          $_SESSION['message'] = 'Пароли не совпадают';
-          header('Location: http://mvcshop.com/admin_admins/change_password');
-          die();
+          $json = array(
+            'status'=> 400,
+            'message'=> 'Пароли не совпадают',
+          );
+          header('Content-Type: application/json');
+          echo json_encode($json);
         }
       } else
       {
-        $_SESSION['message'] = 'Старый пароль не подходит';
-        header('Location: http://mvcshop.com/admin_admins/change_password');
-        die();
+        $json = array(
+          'status'=> 400,
+          'message'=> 'Старый пароль не подходит',
+        );
+        header('Content-Type: application/json');
+        echo json_encode($json);
       }
     }
 }

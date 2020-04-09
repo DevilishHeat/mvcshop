@@ -16,11 +16,11 @@
 <?php
 foreach ($data as $admin):
 ?>
-    <tr class="admin">
+    <tr class="admin" id="<?= $admin['admin_id'] ?>">
         <td>
             <?= $admin['login'] ?>
         </td>
-        <td>
+        <td class="is_password_set">
             <?php
             if ($admin['password'] != '')
             {
@@ -32,7 +32,7 @@ foreach ($data as $admin):
             ?>
         </td>
         <td>
-          <button type="button" class="btn btn-primary change_password" value="<?= $admin['admin_id'] ?>">Изменить пароль</button>
+          <button type="button" class="btn btn-primary change_password" data-toggle="modal" data-target="#change_password" value="<?= $admin['admin_id'] ?>">Изменить пароль</button>
         </td>
         <td>
           <button type="button" value="<?= $admin['admin_id'] ?>" class="btn btn-primary delete_admin">X</button>
@@ -78,3 +78,7 @@ foreach ($data as $admin):
         </tr>
     </table>
 </form>
+
+<?php
+includeTemplate('/templates/modals/admin_admins.php');
+?>

@@ -71,12 +71,23 @@ class model_admin_admins extends model
       $stmt = $dbh->prepare("
          UPDATE admins
          SET password = :password
-         WHERE admin_id = :id
+         WHERE admin_id = :admin_id
          ");
       $stmt->execute(array(
-          ':id'=>$_POST['id'],
+          ':admin_id'=>$_POST['admin_id'],
           ':password'=>$_POST['new_password']
           ));
+      if (strlen($_POST['new_password']) == 0) {
+        return array(
+          'status'=> 200,
+          'message'=> 'X'
+        );
+      } else {
+        return array(
+          'status'=> 200,
+          'message'=> '10003'
+        );
+      }
     }
 
     public function get_password()
@@ -86,8 +97,8 @@ class model_admin_admins extends model
       $stmt = $dbh->prepare("
          SELECT password
          FROM admins
-         WHERE admin_id = :id");
-      $stmt->execute(array(':id'=>$_POST['id']));
+         WHERE admin_id = :admin_id");
+      $stmt->execute(array(':admin_id'=>$_POST['admin_id']));
       $password = $stmt->fetch(PDO::FETCH_ASSOC);
       return $password['password'];
     }

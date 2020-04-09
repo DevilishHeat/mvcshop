@@ -67,4 +67,56 @@ export function delete_admin() {
   }
 }
 
-export function change_password() {}
+export function change_password() {
+  const controller = 'admin_admins';
+  const action = 'change_password';
+  let $modal = $('#change_password');
+  if ($modal.length) {
+    let $form = $modal.find($('.js-change_password'));
+    let $submitBtn = $form.find($('button'));
+    $submitBtn.on('click', event => {
+      event.preventDefault();
+      let admin_id = $form.find($('.admin_id')).attr('value');
+      let data = $form.serializeArray();
+      $.ajax({
+        type: 'POST',
+        url: `http://${location.host}/${controller}/${action}`,
+        data,
+        dataType: 'json',
+        success: function(data) {
+          console.log('success', data);
+          let { status, message } = data;
+          if (status === 400) {
+            let $alert = $modal.find($('.alert'));
+            $alert.removeAttr('hidden').text(message);
+          }
+          if (status === 200) {
+            $modal.modal('hide');
+            let $admin = $(`#${admin_id}`);
+            $admin
+              .find($('.is_password_set'))
+              .text(String.fromCharCode(message));
+          }
+        },
+        error: function(data) {
+          console.log('error', data);
+        },
+      });
+    });
+  }
+}
+
+export function modal_content() {
+  let $buttons = $('.change_password');
+  if ($buttons.length) {
+    $buttons.each(function() {
+      let $button = $(this);
+      $button.on('click', event => {
+        let admin_id = $button.attr('value');
+        let $modal = $('#change_password');
+        let $hidden_input = $modal.find('.admin_id');
+        $hidden_input.attr('value', admin_id);
+      });
+    });
+  }
+}
