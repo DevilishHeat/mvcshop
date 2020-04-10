@@ -32,8 +32,8 @@ class controller_admin_categories extends controller
 
   public function action_create_category()
   {
-    $this->model->create_category();
-    header('Location: http://mvcshop.com/admin_categories');
-    die();
+    $json = $this->model->create_category();
+    header('Content-Type: application/json');
+    echo json_encode($json);
   }
 }

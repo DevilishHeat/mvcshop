@@ -23,7 +23,7 @@
   </tbody>
 </table>
 
-<form action="admin_categories/create_category" method="post">
+<form class="js-create_category">
   <table class="table" border="2">
     <thead class="thead-dark">
     <tr align="center">
@@ -32,11 +32,14 @@
     </thead>
     <tr>
       <th scope="col">Название</th>
-      <th scope="col" rowspan="2" class="align-middle"><input type="submit" value="Создать"></th>
+      <th scope="col" rowspan="2" class="align-bottom">
+        <div class="alert alert-danger" hidden></div>
+        <button type="button" class="btn btn-primary create_category">Создать</button>
+      </th>
     </tr>
     <tr>
-      <td>
-        <input type="text" name="category">
+      <td class="form-group">
+        <input type="text" name="category" class="form-control" required>
       </td>
     </tr>
   </table>

@@ -20,7 +20,17 @@ class model_admin_categories extends model
       INSERT INTO categories (category)
       VALUES (:category)
       ");
-    $stmt->execute(array(':category'=>$_POST['category']));
+    if ($stmt->execute(array(':category'=>$_POST['category']))) {
+      return array(
+        'status'=> 200,
+        'message'=> 'Категория успешно создана'
+      );
+    } else {
+      return array(
+        'status'=> 400,
+        'message'=> 'Проблемы со  cтороны сервера или категория с таким названием уже существует'
+      );
+    }
   }
 
   public function delete_category()
