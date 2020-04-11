@@ -25,11 +25,8 @@
         <input type="submit" value="Изменить">
       </form>
     </td>
-    <td class="align-middle" align="center">
-      <form action="admin_catalog/delete_item" method="post">
-        <input type="hidden" value="<?= $item['item_id'] ?>" name="id">
-        <input type="submit" value="Удалить">
-      </form>
+    <td class="align-middle text-center">
+      <button type="button" class="btn btn-primary delete_item" value="<?= $item['item_id'] ?>">X</button>
     </td>
   </tr>
   <?php endforeach; ?>

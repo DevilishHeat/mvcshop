@@ -32,6 +32,38 @@ export function create_item() {
   }
 }
 
-export function delete_item() {}
+export function delete_item() {
+  const controller = 'admin_catalog';
+  const action = 'delete_item';
+  let $items = $('.item');
+  if ($items.length) {
+    $items.each(function() {
+      let $item = $(this);
+      let $button = $item.find(`.${action}`);
+      if ($button.length) {
+        $button.on('click', event => {
+          event.preventDefault();
+          let item_id = $button.attr('value');
+          let data = { item_id: item_id };
+          $.ajax({
+            type: 'POST',
+            url: `http://${location.host}/${controller}/${action}`,
+            data,
+            success: function(data) {
+              console.log('success', data);
+              let { status } = data;
+              if (status === 200) {
+                $item.remove();
+              }
+            },
+            error: function(data) {
+              console.log('error', data);
+            },
+          });
+        });
+      }
+    });
+  }
+}
 
 export function change_item() {}

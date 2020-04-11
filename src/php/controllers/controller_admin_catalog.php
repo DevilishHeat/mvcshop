@@ -22,9 +22,9 @@ class controller_admin_catalog extends controller
 
     public function action_delete_item()
     {
-      $this->model->delete_item();
-      header('Location: http://mvcshop.com/admin_catalog');
-      die();
+      $json = $this->model->delete_item();
+      header('Content-Type: application/json');
+      echo json_encode($json);
     }
 
     public function action_create_item()

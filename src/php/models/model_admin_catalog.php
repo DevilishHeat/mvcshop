@@ -81,16 +81,37 @@ class model_admin_catalog extends model
         "
         SELECT name
         FROM items
-        WHERE item_id = :id"
+        WHERE item_id = :item_id"
       );
-      $stmt->execute(array(':id'=>$_POST['id']));
-      $name = $stmt->fetch(PDO::FETCH_ASSOC);
-      $stmt = $dbh->prepare(
-        "
+      if ($stmt->execute(array(
+        ':item_id'=>$_POST['item_id'],
+      ))) {
+        $name = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $dbh->prepare(
+          "
         DELETE FROM items
-        WHERE item_id = :id"
-      );
-      $stmt->execute(array(':id'=>$_POST['id']));
-      unlink('../src/assets/images/' . $name['name'] . '.jpg');
+        WHERE item_id = :item_id");
+          if ( $stmt->execute(array(
+            ':item_id'=>$_POST['item_id'],
+          ))) {
+            if (file_exists('../src/assets/images/' . $name['name'] . '.jpg')) {
+              unlink('../src/assets/images/' . $name['name'] . '.jpg');
+            }
+            return array(
+              'status'=> 200,
+              'message'=> 'Товар успешно удалён',
+            );
+          } else {
+            return array(
+              'status'=> 400,
+              'message'=> 'Проблемы с базой данных',
+            );
+          }
+      } else {
+        return array(
+          'status'=> 400,
+          'message'=> 'Проблемы с базой данных',
+        );
+      }
     }
 }
