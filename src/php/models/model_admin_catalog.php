@@ -42,16 +42,35 @@ class model_admin_catalog extends model
       $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
       $stmt = $dbh->prepare(
         "
-        INSERT INTO items (name, price, category_id, description, quantity)
-        VALUES (:name, :price, :category, :description, :quantity)"
+        SELECT category_id FROM categories
+        WHERE category = :category"
       );
       $stmt->execute(array(
+        ':category'=> $_POST['category']
+      ));
+      $category_id = $stmt->fetch(PDO::FETCH_ASSOC);
+      $stmt = $dbh->prepare(
+        "
+        INSERT INTO items (name, price, category_id, description, quantity)
+        VALUES (:name, :price, :category_id, :description, :quantity)"
+      );
+      if ($stmt->execute(array(
         ':name'=>$_POST['name'],
         ':price'=>$_POST['price'],
-        ':category'=>$_POST['category'],
+        ':category_id'=>$category_id['category_id'],
         ':description'=>$_POST['description'],
-        ':quantity'=>$_POST['quantity']
-      ));
+        ':quantity'=>$_POST['quantity'],
+      ))) {
+        return array(
+          'status'=> 200,
+          'message'=> 'Товар успешно добавлен в базу данных'
+        );
+      } else {
+        return array(
+          'status'=> 400,
+          'message'=> 'Проблемы с добавлением данных в базу данных'
+        );
+      }
     }
 
     public function delete_item()

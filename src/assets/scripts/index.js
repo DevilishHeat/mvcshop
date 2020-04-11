@@ -8,6 +8,7 @@ import * as admin_authorization from './modules/admin_authorization';
 import * as admin_orders from './modules/admin_orders';
 import * as admin_admins from './modules/admin_admins';
 import * as admin_categories from './modules/admin_categories';
+import * as admin_catalog from './modules/admin_catalog';
 
 objectFitImages();
 authorization.authorization();
@@ -27,3 +28,6 @@ admin_admins.modal_content();
 admin_categories.change_category();
 admin_categories.create_category();
 admin_categories.delete_category();
+admin_catalog.delete_item();
+admin_catalog.change_item();
+admin_catalog.create_item();
