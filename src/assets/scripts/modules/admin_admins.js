@@ -42,7 +42,7 @@ export function delete_admin() {
       $button.on('click', event => {
         event.preventDefault();
         let admin_id = $button.attr('value');
-        let data = { admin_id: +admin_id };
+        let data = { admin_id: admin_id };
         $.ajax({
           type: 'POST',
           url: `http://${location.host}/${controller}/${action}`,

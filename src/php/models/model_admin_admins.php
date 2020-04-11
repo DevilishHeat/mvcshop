@@ -43,7 +43,7 @@ class model_admin_admins extends model
         SELECT login FROM admins
         WHERE admin_id = :admin_id");
         $stmt->execute(array(
-          'admin-id'=> $_POST['admin_id'],
+          ':admin_id'=> $_POST['admin_id'],
         ));
         $login = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($login['login'] == $_SESSION['admin']) {
