@@ -23,11 +23,11 @@ class controller_admin_categories extends controller
     echo json_encode($json);
   }
 
-  public function action_update_category()
+  public function action_change_category()
   {
-    $this->model->update_category();
-    header('Location: http://mvcshop.com/admin_categories');
-    die();
+    $json = $this->model->update_category();
+    header('Content-Type: application/json');
+    echo json_encode($json);
   }
 
   public function action_create_category()

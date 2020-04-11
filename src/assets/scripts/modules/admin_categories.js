@@ -34,9 +34,9 @@ export function create_category() {
 export function delete_category() {
   const controller = 'admin_categories';
   const action = 'delete_category';
-  let $categoies = $('.category');
-  if ($categoies.length) {
-    $categoies.each(function() {
+  let $categories = $('.category');
+  if ($categories.length) {
+    $categories.each(function() {
       let $category = $(this);
       let $button = $category.find(`.${action}`);
       $button.on('click', event => {
@@ -63,4 +63,52 @@ export function delete_category() {
   }
 }
 
-export function change_category() {}
+export function change_category() {
+  const controller = 'admin_categories';
+  const action = 'change_category';
+  let $categories = $('.category');
+  if ($categories.length) {
+    $categories.each(function() {
+      let $category = $(this);
+      let $form = $category.find(`.js-${action}`);
+      let $changeBtn = $category.find(`.${action}`);
+      let $cancelBtn = $form.find('.cancel');
+      let $saveBtn = $form.find('.save');
+      let $alert = $category.find('.alert');
+      $changeBtn.on('click', event => {
+        event.preventDefault();
+        $changeBtn.attr('hidden', true);
+        $form.attr('hidden', false);
+      });
+      $cancelBtn.on('click', event => {
+        event.preventDefault();
+        $changeBtn.attr('hidden', false);
+        $form.attr('hidden', true);
+        $alert.attr('hidden', true);
+      });
+      $saveBtn.on('click', event => {
+        event.preventDefault();
+        let data = $form.serializeArray();
+        $.ajax({
+          type: 'POST',
+          url: `http://${location.host}/${controller}/${action}`,
+          data,
+          dataType: 'json',
+          success: function(data) {
+            console.log('success', data);
+            let { status, message } = data;
+            if (status === 200) {
+              location.reload();
+            }
+            if (status === 400) {
+              $alert.attr('hidden', false).text(message);
+            }
+          },
+          error: function(data) {
+            console.log('error', data);
+          },
+        });
+      });
+    });
+  }
+}

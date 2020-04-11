@@ -49,6 +49,24 @@ class model_admin_categories extends model
   {
     $this->set_dsn();
     $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
-    $stmt = $dbh->prepare();
+    $stmt = $dbh->prepare(
+      'UPDATE categories
+      SET category = :category
+      WHERE category_id = :category_id'
+    );
+    if ($stmt->execute(array(
+      ':category'=> $_POST['changed_category'],
+      ':category_id'=> $_POST['category_id'],
+    ))) {
+      return array(
+        'status'=> 200,
+        'message'=> 'Название категории успешно изменено',
+      );
+    } else {
+      return array(
+        'status'=> 400,
+        'message'=> 'Ошибка со стороны базы данных'
+      );
+    }
   }
 }
