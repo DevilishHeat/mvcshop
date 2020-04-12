@@ -69,9 +69,9 @@ export function delete_admin() {
 export function change_password() {
   const controller = 'admin_admins';
   const action = 'change_password';
-  let $modal = $('#change_password');
+  let $modal = $(`#${action}`);
   if ($modal.length) {
-    let $form = $modal.find($('.js-change_password'));
+    let $form = $modal.find($(`.js-${action}`));
     let $submitBtn = $form.find($('button'));
     $submitBtn.on('click', event => {
       event.preventDefault();

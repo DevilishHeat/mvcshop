@@ -20,10 +20,7 @@
     <td class="align-middle text-center" ><?= $item['price'] ?></td>
     <td class="align-middle text-center"><?= $item['quantity'] ?></td>
     <td class="align-middle text-center">
-      <form action="admin_catalog/update_item" method="post">
-        <input type="hidden" value="<?= $item['item_id'] ?>">
-        <input type="submit" value="Изменить">
-      </form>
+      <button type="button" class="btn btn-primary change_item" data-toggle="modal" data-target="#change_item" value="<?= $item['item_id'] ?>">Изменить</button>
     </td>
     <td class="align-middle text-center">
       <button type="button" class="btn btn-primary delete_item" value="<?= $item['item_id'] ?>">X</button>
@@ -59,6 +56,7 @@
         <label for="image">Изображение</label>
       </th>
       <th scope="col" rowspan="2" class="align-middle">
+        <div class="alert alert-danger" hidden></div>
         <button type="submit" class="btn btn-primary create_item">Создать</button>
       </th>
     </tr>
@@ -90,3 +88,7 @@
     </tr>
   </table>
 </form>
+
+<?php
+includeTemplate('/templates/modals/admin_catalog.php');
+?>

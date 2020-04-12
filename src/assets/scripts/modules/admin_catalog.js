@@ -70,4 +70,50 @@ export function delete_item() {
   }
 }
 
-export function change_item() {}
+export function change_item() {
+  const controller = 'admin_catalog';
+  const action = 'change_item';
+  let $modal = $(`#${action}`);
+  if ($modal.length) {
+    let $form = $modal.find($(`.js-${action}`));
+    let $submitBtn = $form.find($('button'));
+    $submitBtn.on('click', event => {
+      event.preventDefault();
+      let item_id = $form.find($('.item_id')).attr('value');
+      let data = $form.serializeArray();
+      $.ajax({
+        type: 'POST',
+        url: `http://${location.host}/${controller}/${action}`,
+        data,
+        dataType: 'json',
+        success: function(data) {
+          console.log('success', data);
+          let { status, message } = data;
+          if (status === 400) {
+            let $alert = $modal.find($('.alert'));
+            $alert.removeAttr('hidden').text(message);
+          }
+          if (status === 200) {
+            location.reload();
+          }
+        },
+        error: function(data) {
+          console.log('error', data);
+        },
+      });
+    });
+  }
+}
+
+export function modal_content() {
+  let $buttons = $('.change_item');
+  if ($buttons.length) {
+    $buttons.each(function() {
+      let $button = $(this);
+      $button.on('click', event => {
+        let item_id = $button.attr('value');
+        let $modal = $('#change_item');
+      });
+    });
+  }
+}

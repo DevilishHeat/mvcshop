@@ -31,9 +31,18 @@ class controller_admin_catalog extends controller
     {
       $name = $_FILES['image']['tmp_name'];
       $path = "../src/assets/images/";
-      move_uploaded_file($name, $path . $_POST['name'] . '.jpg');
-      $json = $this->model->create_item();
-      header('Content-Type: application/json');
-      echo json_encode($json);
+      if (move_uploaded_file($name, $path . $_POST['name'] . '.jpg')) {
+        $json = $this->model->create_item();
+        header('Content-Type: application/json');
+        echo json_encode($json);
+      }
+      else {
+        $json = array(
+          'status'=> 400,
+          'message'=> 'Наименование товара не должно содержать символы / ? * : ; { } \ ',
+        );
+        header('Content-Type: application/json');
+        echo json_encode($json);
+      }
     }
 }

@@ -31,3 +31,4 @@ admin_categories.delete_category();
 admin_catalog.delete_item();
 admin_catalog.change_item();
 admin_catalog.create_item();
+admin_catalog.modal_content();
