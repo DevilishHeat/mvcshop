@@ -1,4 +1,4 @@
-<table class="table" border="2">
+<table class="table">
   <thead class="thead-dark">
   <tr>
     <th scope="col">#</th>
@@ -17,9 +17,9 @@
     <td class="align-middle"><?= $item['name'] ?></td>
     <td class="align-middle"><?= $item['description'] ?></td>
     <td class="align-middle"><?= $item['category'] ?></td>
-    <td class="align-middle" align="center"><?= $item['price'] ?></td>
-    <td class="align-middle" align="center"><?= $item['quantity'] ?></td>
-    <td class="align-middle" align="center">
+    <td class="align-middle text-center" ><?= $item['price'] ?></td>
+    <td class="align-middle text-center"><?= $item['quantity'] ?></td>
+    <td class="align-middle text-center">
       <form action="admin_catalog/update_item" method="post">
         <input type="hidden" value="<?= $item['item_id'] ?>">
         <input type="submit" value="Изменить">
@@ -59,7 +59,7 @@
         <label for="image">Изображение</label>
       </th>
       <th scope="col" rowspan="2" class="align-middle">
-        <button type="button" class="btn btn-primary create_item">Создать</button>
+        <button type="submit" class="btn btn-primary create_item">Создать</button>
       </th>
     </tr>
     <tr>
@@ -85,7 +85,7 @@
         <input type="text" name="quantity" id="quantity" class="form-control">
       </td>
       <td>
-        <input type="file" name="img" accept="images/*" id="image" class="form-control">
+        <input type="file" name="image" accept="images/*" id="image" class="form-control">
       </td>
     </tr>
   </table>

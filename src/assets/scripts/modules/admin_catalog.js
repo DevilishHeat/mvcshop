@@ -6,13 +6,17 @@ export function create_item() {
     let $submitBtn = $form.find(`.${action}`);
     $submitBtn.on('click', event => {
       event.preventDefault();
-      let data = $form.serializeArray();
+      let form = $(`.js-${action}`)[0];
+      let data = new FormData(form);
       console.log(data);
       $.ajax({
         type: 'POST',
         url: `http://${location.host}/${controller}/${action}`,
-        data,
+        data: data,
+        contentType: false,
+        processData: false,
         dataType: 'json',
+        enctype: 'multipart/form-data',
         success: function(data) {
           console.log('success', data);
           let { status, message } = data;
