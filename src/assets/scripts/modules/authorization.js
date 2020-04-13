@@ -1,15 +1,13 @@
 export function authorization() {
   const controller = 'authorization';
   let $modal = $('#authorization');
-  let $form = $(`.js-${controller}`);
-  let $submitBtn = $form.find('button[type="submit"]');
-  let $alert = $modal.find('.alert-danger');
-
-  if ($submitBtn.length) {
+  if ($modal.length) {
+    let $form = $(`.js-${controller}`);
+    let $submitBtn = $form.find('button[type="submit"]');
+    let $alert = $modal.find('.alert-danger');
     $submitBtn.off(`click.${controller}`).on(`click.${controller}`, event => {
       event.preventDefault();
       let data = $form.serializeArray();
-
       $.ajax({
         type: 'POST',
         url: `http://${location.host}/${controller}`,
@@ -38,8 +36,8 @@ export function authorization() {
 }
 
 export function logout() {
-  const action = 'logout';
   const controller = 'authorization';
+  const action = 'logout';
   let $button = $(`.${action}`);
   if ($button.length) {
     $button.off(`click.${action}`).on(`click.${action}`, event => {
@@ -49,7 +47,6 @@ export function logout() {
         url: `http://${location.host}/${controller}/${action}`,
         success: function() {
           location.reload();
-          return;
         },
       });
     });

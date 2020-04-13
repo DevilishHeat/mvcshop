@@ -79,7 +79,6 @@ export function change_item() {
     let $submitBtn = $form.find($('button'));
     $submitBtn.on('click', event => {
       event.preventDefault();
-      let item_id = $form.find($('.item_id')).attr('value');
       let data = $form.serializeArray();
       $.ajax({
         type: 'POST',
@@ -108,15 +107,25 @@ export function change_item() {
 export function modal_content() {
   const controller = 'admin_catalog';
   if (location.pathname.indexOf(controller) !== -1) {
-    let $buttons = $('.change_item');
-    if ($buttons.length) {
-      $buttons.each(function() {
-        let $button = $(this);
-        $button.on('click', event => {
-          let item_id = $button.attr('value');
-          let $modal = $('#change_item');
-        });
+    let $items = $('.item');
+    $items.each(function() {
+      let $item = $(this);
+      let $changeBtn = $item.find($('.change_item'));
+      $changeBtn.on('click', event => {
+        let $data = $item.find($('.data_container'));
+        let $modal = $('#change_item');
+        let $form = $modal.find($('.js-change_item'));
+        let $name = $form.find('input[name="name"]');
+        $name.attr('value', $data.data('name'));
+        let $description = $form.find('textarea[name="description"]');
+        $description.val($data.data('description'));
+        let $category = $form.find('select[name="category"]');
+        $category.val($data.data('category'));
+        let $price = $form.find('input[name="price"]');
+        $price.attr('value', $data.data('price'));
+        let $item_id = $form.find('input[name="item_id"]');
+        $item_id.attr('value', $data.data('item_id'));
       });
-    }
+    });
   }
 }

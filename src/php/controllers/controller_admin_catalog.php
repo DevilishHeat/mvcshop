@@ -13,11 +13,11 @@ class controller_admin_catalog extends controller
         $this->view->generate('view_admin_catalog.php', 'view_template_admin.php', $data);
     }
 
-    public function action_update_item()
+    public function action_change_item()
     {
-        $this->model->update_item();
-        header('Location: http://mvcshop.com/admin_catalog');
-        die();
+        $json = $this->model->change_item();
+
+        echo json_encode($json);
     }
 
     public function action_delete_item()

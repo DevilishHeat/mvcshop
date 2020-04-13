@@ -13,6 +13,7 @@
 </head>
 
 <?php
+//Если администратор авторизован, то отображается нужная страница, иначе предлагает авторизоваться
 if (isset($_SESSION['admin'])):
 ?>
 <body class="body">
@@ -28,7 +29,6 @@ if (isset($_SESSION['admin'])):
         include 'views/'.$content_view;
       }
       ?>
-      }
 		</div>
 	</div>
 
