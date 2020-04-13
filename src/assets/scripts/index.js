@@ -9,6 +9,7 @@ import * as admin_orders from './modules/admin_orders';
 import * as admin_admins from './modules/admin_admins';
 import * as admin_categories from './modules/admin_categories';
 import * as admin_catalog from './modules/admin_catalog';
+import * as single_item from './modules/single_item';
 
 objectFitImages();
 authorization.authorization();
@@ -32,3 +33,4 @@ admin_catalog.delete_item();
 admin_catalog.change_item();
 admin_catalog.create_item();
 admin_catalog.modal_content();
+single_item.add_item();

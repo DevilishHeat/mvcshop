@@ -1,8 +1,8 @@
 export function create_category() {
   const controller = 'admin_categories';
   const action = 'create_category';
-  let $form = $(`.js-${action}`);
-  if ($form.length) {
+  if (location.pathname.indexOf(controller) !== -1) {
+    let $form = $(`.js-${action}`);
     let $submitBtn = $form.find(`.${action}`);
     $submitBtn.on('click', event => {
       event.preventDefault();
@@ -34,8 +34,8 @@ export function create_category() {
 export function delete_category() {
   const controller = 'admin_categories';
   const action = 'delete_category';
-  let $categories = $('.category');
-  if ($categories.length) {
+  if (location.pathname.indexOf(controller) !== -1) {
+    let $categories = $('.category');
     $categories.each(function() {
       let $category = $(this);
       let $button = $category.find(`.${action}`);
@@ -66,8 +66,8 @@ export function delete_category() {
 export function change_category() {
   const controller = 'admin_categories';
   const action = 'change_category';
-  let $categories = $('.category');
-  if ($categories.length) {
+  if (location.pathname.indexOf(controller) !== -1) {
+    let $categories = $('.category');
     $categories.each(function() {
       let $category = $(this);
       let $form = $category.find(`.js-${action}`);

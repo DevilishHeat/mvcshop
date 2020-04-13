@@ -16,14 +16,19 @@
                 <div class="card border border-primary">
                   <img class="card-img-top" src="<?= $this->images . $item['name'] . '.jpg' ?>" alt="Изображение товара">
                   <div class="card-body">
-                    <h5 class="card-title text-primary"><?= $item['name']?></h5>
+                    <div class="card-title text-primary">
+                      <form action="single_item" method="get">
+                        <input type="hidden" name="item_id" value="<?= $item['item_id'] ?>">
+                        <button type="submit" class="btn btn-link"><?= $item['name'] ?></button>
+                      </form>
+                    </div>
                     <p class="card-text text-dark"><?= $item['description'] ?></p>
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item text-dark border-primary">Категория: <?= $item['category'] ?></li>
                     <li class="list-group-item text-dark border-primary">Цена: <?= $item['price'] ?></li>
                     <li class="list-group-item text-dark border-primary">
-                      <button class="btn btn-primary js-add_item" type="submit" value="<?= $item['item_id'] ?>">В корзину</button>
+                      <button class="btn btn-primary add_item" type="submit" value="<?= $item['item_id'] ?>">В корзину</button>
                     </li>
                   </ul>
                 </div>

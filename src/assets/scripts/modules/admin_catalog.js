@@ -1,8 +1,8 @@
 export function create_item() {
   const controller = 'admin_catalog';
   const action = 'create_item';
-  let $form = $(`.js-${action}`);
-  if ($form.length) {
+  if (location.pathname.indexOf(controller) !== -1) {
+    let $form = $(`.js-${action}`);
     let $submitBtn = $form.find(`.${action}`);
     $submitBtn.on('click', event => {
       event.preventDefault();
@@ -39,8 +39,8 @@ export function create_item() {
 export function delete_item() {
   const controller = 'admin_catalog';
   const action = 'delete_item';
-  let $items = $('.item');
-  if ($items.length) {
+  if (location.pathname.indexOf(controller) !== -1) {
+    let $items = $('.item');
     $items.each(function() {
       let $item = $(this);
       let $button = $item.find(`.${action}`);
@@ -73,8 +73,8 @@ export function delete_item() {
 export function change_item() {
   const controller = 'admin_catalog';
   const action = 'change_item';
-  let $modal = $(`#${action}`);
-  if ($modal.length) {
+  if (location.pathname.indexOf(controller) !== -1) {
+    let $modal = $(`#${action}`);
     let $form = $modal.find($(`.js-${action}`));
     let $submitBtn = $form.find($('button'));
     $submitBtn.on('click', event => {
@@ -106,14 +106,17 @@ export function change_item() {
 }
 
 export function modal_content() {
-  let $buttons = $('.change_item');
-  if ($buttons.length) {
-    $buttons.each(function() {
-      let $button = $(this);
-      $button.on('click', event => {
-        let item_id = $button.attr('value');
-        let $modal = $('#change_item');
+  const controller = 'admin_catalog';
+  if (location.pathname.indexOf(controller) !== -1) {
+    let $buttons = $('.change_item');
+    if ($buttons.length) {
+      $buttons.each(function() {
+        let $button = $(this);
+        $button.on('click', event => {
+          let item_id = $button.attr('value');
+          let $modal = $('#change_item');
+        });
       });
-    });
+    }
   }
 }

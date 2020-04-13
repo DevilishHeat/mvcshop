@@ -25,18 +25,19 @@ class controller_cart extends controller
 
   public function action_add_item()
   {
-    $id = $_POST['id'];
+    $item_id = $_POST['item_id'];
+    $quantity = $_POST['quantity'];
       //в массиве cart под индексом, равным id товара в бд, указывается количество этого товара в заказе
     if (!isset($_SESSION['cart']))
     {
       $_SESSION['cart'] = array();
     }
-    if (array_key_exists("$id", $_SESSION['cart']))
+    if (array_key_exists("$item_id", $_SESSION['cart']))
     {
-      $_SESSION['cart']["$id"] += 1;
+      $_SESSION['cart']["$item_id"] += $quantity;
     } else
     {
-      $_SESSION['cart']["$id"] = 1;
+      $_SESSION['cart']["$item_id"] = $quantity;
     }
     $json = array(
       'status'=> 200,

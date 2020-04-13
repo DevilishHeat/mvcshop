@@ -1,8 +1,8 @@
 export function create_admin() {
   const controller = 'admin_admins';
   const action = 'create_admin';
-  let $form = $(`.js-${action}`);
-  if ($form.length) {
+  if (location.pathname.indexOf(controller) !== -1) {
+    let $form = $(`.js-${action}`);
     let $submitBtn = $form.find(`.${action}`);
     $submitBtn.on('click', event => {
       event.preventDefault();
@@ -34,8 +34,8 @@ export function create_admin() {
 export function delete_admin() {
   const controller = 'admin_admins';
   const action = 'delete_admin';
-  let $admins = $('.admin');
-  if ($admins.length) {
+  if (location.pathname.indexOf(controller) !== -1) {
+    let $admins = $('.admin');
     $admins.each(function() {
       let $admin = $(this);
       let $button = $admin.find(`.${action}`);
@@ -69,8 +69,8 @@ export function delete_admin() {
 export function change_password() {
   const controller = 'admin_admins';
   const action = 'change_password';
-  let $modal = $(`#${action}`);
-  if ($modal.length) {
+  if (location.pathname.indexOf(controller) !== -1) {
+    let $modal = $(`#${action}`);
     let $form = $modal.find($(`.js-${action}`));
     let $submitBtn = $form.find($('button'));
     $submitBtn.on('click', event => {
@@ -106,16 +106,19 @@ export function change_password() {
 }
 
 export function modal_content() {
-  let $buttons = $('.change_password');
-  if ($buttons.length) {
-    $buttons.each(function() {
-      let $button = $(this);
-      $button.on('click', event => {
-        let admin_id = $button.attr('value');
-        let $modal = $('#change_password');
-        let $hidden_input = $modal.find('.admin_id');
-        $hidden_input.attr('value', admin_id);
+  const controller = 'admin_admins';
+  if (location.pathname.indexOf(controller) !== -1) {
+    let $buttons = $('.change_password');
+    if ($buttons.length) {
+      $buttons.each(function() {
+        let $button = $(this);
+        $button.on('click', event => {
+          let admin_id = $button.attr('value');
+          let $modal = $('#change_password');
+          let $hidden_input = $modal.find('.admin_id');
+          $hidden_input.attr('value', admin_id);
+        });
       });
-    });
+    }
   }
 }

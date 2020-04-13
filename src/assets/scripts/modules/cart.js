@@ -1,12 +1,13 @@
 export function add_item() {
   const controller = 'cart';
   const action = 'add_item';
-  if ($(`.js-${action}`).length) {
-    $(`.js-${action}`).each(function(index) {
+  let $buttons = $(`.${action}`);
+  if ($buttons.length) {
+    $buttons.each(function() {
       let $add_item_button = $(this);
       $add_item_button.on('click', event => {
         event.preventDefault();
-        let data = { id: $add_item_button.attr('value') };
+        let data = { item_id: $add_item_button.attr('value'), quantity: 1 };
         $.ajax({
           type: 'POST',
           url: `http://${location.host}/${controller}/${action}`,
@@ -29,7 +30,7 @@ export function add_item() {
 export function delete_item() {
   const controller = 'cart';
   const action = 'delete_item';
-  if ($('.item').length) {
+  if (location.pathname.indexOf(controller) !== -1) {
     $('.item').each(function() {
       let $item = $(this);
       let $price = $item.find('.price').text();
@@ -75,9 +76,9 @@ export function delete_item() {
 export function create_order() {
   const controller = 'cart';
   const action = 'create_order';
-  let $form = $(`.js-${controller}`);
-  let $submitBtn = $form.find('.create_order');
-  if ($form.length) {
+  if (location.pathname.indexOf(controller) !== -1) {
+    let $form = $(`.js-${controller}`);
+    let $submitBtn = $form.find('.create_order');
     $submitBtn.on('click', event => {
       event.preventDefault();
       if ($form.find('input[name=username]').val() === '') {
@@ -118,9 +119,9 @@ export function create_order() {
 export function total_price_calculation() {
   const controller = 'cart';
   const action = 'change_item_quantity';
-  let $items = $('.item');
-  let $total_price = $('.total_price');
-  if ($items.length) {
+  if (location.pathname.indexOf(controller) !== -1) {
+    let $items = $('.item');
+    let $total_price = $('.total_price');
     $items.each(function() {
       let $item = $(this);
       let $selector = $item.find('.quantity_selector');

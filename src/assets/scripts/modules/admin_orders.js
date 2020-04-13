@@ -1,8 +1,8 @@
 export function delete_order() {
   const controller = 'admin_orders';
   const action = 'delete_order';
-  let $form = $(`.js-${action}`);
-  if ($form.length) {
+  if (location.pathname.indexOf(controller) !== -1) {
+    let $form = $(`.js-${action}`);
     $form.each(function() {
       let $form = $(this);
       let $button = $form.find(`.${action}`);
