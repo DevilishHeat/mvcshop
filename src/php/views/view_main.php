@@ -11,7 +11,15 @@
 
         <div class="col-9">
           <div class="container__row row">
-            <?php foreach ($data['items'] as $item): ?>
+            <?php
+            $first_index = ($data['cur_page'] - 1) * 8;
+            for ($i = $first_index; $i< $first_index + 8; $i++):
+              if (isset($data['items'][$i])) {
+                $item = $data['items'][$i];
+              } else {
+                break;
+              }
+            ?>
               <div class="col-3 mb-3">
                 <div class="card border border-primary">
                   <img class="card-img-top" src="<?= $this->images . $item['name'] . '.jpg' ?>" alt="Изображение товара">
@@ -33,8 +41,31 @@
                   </ul>
                 </div>
               </div>
-            <?php endforeach; ?>
+            <?php endfor; ?>
           </div>
+          <?php if (count($data['items']) / 8 > 1): ?>
+            <nav>
+              <ul class="pagination">
+                <li class="page-item <?= $data['cur_page'] - 1 < 1 ? 'disabled' : '' ?>">
+                  <a class="page-link" href="main?page_number=<?= $data['cur_page'] - 1 ?>" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <?php for ($i = 1; $i <= count($data['items']) / 8 + 1; $i++):?>
+                 <li class="page-item">
+                   <a class="page-link" href="main?page_number=<?= $i ?>"><?= $i ?></a>
+                 </li>
+                <?php endfor; ?>
+                <li class="page-item <?= $data['cur_page'] + 1 > count($data['items']) / 8 + 1 ? 'disabled' : '' ?>">
+                  <a class="page-link" href="main?page_number=<?= $data['cur_page'] + 1 ?>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          <?php endif; ?>
         </div>
       </div>
 

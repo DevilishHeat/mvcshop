@@ -10,6 +10,11 @@ class controller_main extends controller
     public function action_index()
     {
         $data = $this->model->get_data();
+        if (isset($_GET['page_number'])) {
+          $data['cur_page'] = $_GET['page_number'];
+        } else {
+          $data['cur_page'] = 1;
+        }
         $this->view->generate('view_main.php', 'view_template.php', $data);
     }
 }
