@@ -5,10 +5,12 @@ class model_catalog extends model
   {
     $this->set_dsn();
     $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
-    $stmt = $dbh->prepare("
-            SELECT * FROM items
-            LEFT JOIN categories ON items.category_id = categories.category_id
-            WHERE category = :category");
+    $stmt = $dbh->prepare(
+      "
+        SELECT * FROM items
+        LEFT JOIN categories ON items.category_id = categories.category_id
+        WHERE category = :category
+        ");
     $stmt->execute(array(
       ':category'=>$_GET['category']
     ));

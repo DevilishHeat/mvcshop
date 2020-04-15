@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once 'utils/includeTemplate.php';
 require_once 'core/model.php';
 require_once 'core/view.php';
 require_once 'core/controller.php';

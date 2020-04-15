@@ -8,10 +8,14 @@ class model_admin_catalog extends model
         $stmt = $dbh->prepare(
           "
             SELECT * FROM items
-            LEFT JOIN categories ON items.category_id = categories.category_id");
+            LEFT JOIN categories ON items.category_id = categories.category_id
+            ");
         $stmt->execute();
         $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $stmt = $dbh->prepare("SELECT * FROM categories");
+        $stmt = $dbh->prepare(
+          "
+          SELECT * FROM categories
+          ");
         $stmt->execute();
         $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $data = array('items'=>$items, 'categories'=>$categories);
@@ -26,12 +30,12 @@ class model_admin_catalog extends model
         "
           SELECT name FROM items
           WHERE item_id = :item_id"
-      );
+          );
       $stmt->execute(array(
         ':item_id'=> $_POST['item_id']
       ));
       $old_name = $stmt->fetch(PDO::FETCH_ASSOC);
-      $path ="../src/assets/images/";
+      $path ="./assets/images/";
       if ($old_name['name'] != $_POST['name']) {
         if (file_exists($path . $old_name['name'] . '.jpg')) {
           if (!rename($path . $old_name['name'] . '.jpg', $path . $_POST['name'] . '.jpg')) {
@@ -128,8 +132,8 @@ class model_admin_catalog extends model
           if ( $stmt->execute(array(
             ':item_id'=>$_POST['item_id'],
           ))) {
-            if (file_exists('../src/assets/images/' . $name['name'] . '.jpg')) {
-              unlink('../src/assets/images/' . $name['name'] . '.jpg');
+            if (file_exists('./assets/images/' . $name['name'] . '.jpg')) {
+              unlink('./assets/images/' . $name['name'] . '.jpg');
             }
             return array(
               'status'=> 200,

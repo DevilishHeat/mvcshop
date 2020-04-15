@@ -11,7 +11,7 @@ class controller_admin extends controller
     {
         if (isset($_SESSION['admin']))
         {
-            header('Location: http://mvcshop.com/admin_orders');
+            header("Location: http://$_SERVER[SERVER_NAME]/admin_orders");
             die();
         }else
         {

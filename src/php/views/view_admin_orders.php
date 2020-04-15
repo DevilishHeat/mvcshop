@@ -3,10 +3,12 @@ $current_order_id = 0;
 ?>
 <table class="table">
   <thead class="thead-dark">
-  <th scope="col">Заказчик\товар</th>
-  <th scope="col">#заказа\товара</th>
-  <th scope="col">Сумма/цена</th>
-  <th scope="col"></th>
+  <tr>
+    <th scope="col">Заказчик\товар</th>
+    <th scope="col">#заказа\товара</th>
+    <th scope="col">Сумма/цена</th>
+    <th scope="col"></th>
+  </tr>
   </thead>
   <tbody>
   <?php foreach ($data as $order):

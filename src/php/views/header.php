@@ -61,6 +61,6 @@
 </header>
 
 <?php
-  includeTemplate('/templates/modals/authorization.php');
-  includeTemplate('/templates/modals/registration.php');
+  include('./templates/modals/authorization.php');
+  include('./templates/modals/registration.php');
 ?>

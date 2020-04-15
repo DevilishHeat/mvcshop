@@ -5,7 +5,11 @@ class model_admin_categories extends model
   {
     $this->set_dsn();
     $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
-    $stmt = $dbh->prepare("SELECT * FROM categories");
+    $stmt = $dbh->prepare(
+      "
+      SELECT * FROM categories
+      "
+    );
     $stmt->execute();
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $data;
@@ -50,9 +54,11 @@ class model_admin_categories extends model
     $this->set_dsn();
     $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
     $stmt = $dbh->prepare(
-      'UPDATE categories
+      "
+      UPDATE categories
       SET category = :category
-      WHERE category_id = :category_id'
+      WHERE category_id = :category_id
+      "
     );
     if ($stmt->execute(array(
       ':category'=> $_POST['changed_category'],

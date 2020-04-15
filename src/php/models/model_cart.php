@@ -9,13 +9,15 @@ class model_cart extends model
       $dbh = new PDO($this->dsn, $this->db_username, $this->db_password);
       $stmt = $dbh->prepare(
         "
-      SELECT * FROM items
-      WHERE item_id = :id
+        SELECT * FROM items
+        WHERE item_id = :item_id
       ");
       $data = array();
-      foreach ($_SESSION['cart'] as $id => $quantity)
+      foreach ($_SESSION['cart'] as $item_id => $quantity)
       {
-        $stmt->execute(array(':id'=>$id));
+        $stmt->execute(array(
+          ':item_id'=>$item_id
+        ));
         $data[] = $stmt->fetch(PDO::FETCH_ASSOC);
       }
       return $data;

@@ -19,14 +19,14 @@ if (isset($_SESSION['admin'])):
 <body class="body">
 	<div class="body__wrapper">
 		<div class="body__header">
-			<?php include 'views/header_admin.php'; ?>
+			<?php include './views/header_admin.php'; ?>
 		</div>
 		<div class="body__content">
 			<?php
       if ($content_view == 'view_admin.php') {
-        include 'views/view_admin_orders.php';
+        include './views/view_admin_orders.php';
       } else {
-        include 'views/'.$content_view;
+        include './views/'.$content_view;
       }
       ?>
 		</div>
@@ -36,7 +36,7 @@ if (isset($_SESSION['admin'])):
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-	<script src="../assets/scripts/bundle.js" defer></script>
+	<script src="./assets/scripts/bundle.js" defer></script>
 </body>
 <?php
 else:

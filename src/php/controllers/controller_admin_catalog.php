@@ -30,7 +30,7 @@ class controller_admin_catalog extends controller
     public function action_create_item()
     {
       $name = $_FILES['image']['tmp_name'];
-      $path = "../src/assets/images/";
+      $path = "./assets/images/";
       if (move_uploaded_file($name, $path . $_POST['name'] . '.jpg')) {
         $json = $this->model->create_item();
         header('Content-Type: application/json');

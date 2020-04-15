@@ -97,7 +97,7 @@
       </tr>
     </table>
   </form>
-  <?php
-  include($_SERVER['DOCUMENT_ROOT'] . '/templates/modals/admin_catalog.php');
-  ?>
 </div>
+<?php
+include('./templates/modals/admin_catalog.php');
+?>

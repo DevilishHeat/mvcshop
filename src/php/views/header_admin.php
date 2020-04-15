@@ -21,10 +21,10 @@
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="navbar-nav">
             <a class="nav-item nav-link" href="/">Главная</a>
-            <a class="nav-item nav-link active" href="admin_catalog">Каталог</a>
-            <a class="nav-item nav-link" href="admin_admins">Администраторы</a>
-            <a class="nav-item nav-link" href="admin_categories">Категории</a>
-            <a class="nav-item nav-link" href="admin_orders">Заказы</a>
+            <a class="nav-item nav-link <?= stristr($_SERVER['REQUEST_URI'], 'admin_catalog') ? 'active' : '' ?>" href="admin_catalog">Каталог</a>
+            <a class="nav-item nav-link <?= stristr($_SERVER['REQUEST_URI'], 'admin_admins') ? 'active' : '' ?>" href="admin_admins">Администраторы</a>
+            <a class="nav-item nav-link <?= stristr($_SERVER['REQUEST_URI'], 'admin_categories') ? 'active' : '' ?>" href="admin_categories">Категории</a>
+            <a class="nav-item nav-link <?= stristr($_SERVER['REQUEST_URI'], 'admin_orders') ? 'active' : '' ?>" href="admin_orders">Заказы</a>
           </div>
         </nav>
       </div>

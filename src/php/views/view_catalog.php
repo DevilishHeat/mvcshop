@@ -6,7 +6,7 @@
 		<div class="container__main">
       <div class="row">
         <div class="col-3">
-          <?php include 'views/view_sidebar.php'?>
+          <?php include './views/view_sidebar.php'?>
         </div>
 
         <div class="col-9">
@@ -22,7 +22,7 @@
             ?>
               <div class="col-3 mb-3">
                 <div class="card border border-primary">
-                  <img class="card-img-top" src="<?= $this->images . $item['name'] . '.jpg' ?>" alt="Изображение товара">
+                  <img class="card-img-top" src="<?= $this->images . $item['name'] . '.jpg' ?>" alt="image">
                   <div class="card-body">
                     <div class="card-title text-primary">
                       <form action="single_item" method="get">

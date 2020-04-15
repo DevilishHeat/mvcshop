@@ -1,6 +1,6 @@
 <?php if(isset($_SESSION['cart'])): ?>
   <form class="js-cart">
-    <table class="table cart-table" border="2">
+    <table class="table cart-table">
       <thead class="thead-dark">
       <tr>
       <th scope="col">
@@ -22,7 +22,7 @@
     <?php foreach ($data as $item): ?>
       <tr class="item">
         <td>
-          <img src="<?= $this->images . $item['name'] . '.jpg' ?>" height="50">
+          <img src="<?= $this->images . $item['name'] . '.jpg' ?>" height="50" alt="image">
         </td>
         <td>
           <?= $item['name'] ?>
@@ -77,5 +77,5 @@
 <?php
 //Вывод сообщения, что корзина пуста
 else:
-  echo "<div align='center'>$data</div>";
+  echo "<div class='text-center'>$data</div>";
 endif;

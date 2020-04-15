@@ -34,7 +34,7 @@ class Route
         $model_path = "models/".$model_file;
         if(file_exists($model_path))
         {
-            include "models/".$model_file;
+            include $model_path;
         }
 
         // подцепляем файл с классом контроллера
@@ -42,7 +42,7 @@ class Route
         $controller_path = "controllers/".$controller_file;
         if(file_exists($controller_path))
         {
-            include "controllers/".$controller_file;
+            include $controller_path;
         }
         else
         {
@@ -68,6 +68,6 @@ class Route
     {
         header('HTTP/1.1 404 Not Found');
         header("Status: 404 Not Found");
-        header('Location: http://mvcshop.com/404');
+        header("Location: http://$_SERVER[SERVER_NAME]/404");
     }
 }

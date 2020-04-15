@@ -16,17 +16,17 @@
 	<body class="body">
 		<div class="body__wrapper">
 			<div class="body__header">
-				<?php include 'views/header.php'; ?>
+				<?php include './views/header.php'; ?>
 			</div>
 			<main class="body__content container pt-5 pb-5">
 				<div class="row">
 					<div class="col-12 content_view">
-						<?php include 'views/'.$content_view; ?>
+						<?php include './views/'.$content_view; ?>
 					</div>
 				</div>
 			</main>
 			<div class="body__footer">
-				<?php include 'views/footer.php'; ?>
+				<?php include './views/footer.php'; ?>
 			</div>
 		</div>
 		
@@ -34,6 +34,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-		<script src="assets/scripts/bundle.js" defer></script>
+		<script src="./assets/scripts/bundle.js" defer></script>
 	</body>
 </html>

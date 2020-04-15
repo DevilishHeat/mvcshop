@@ -41,12 +41,14 @@
 <form class="js-create_category">
   <table class="table table-bordered">
     <thead class="thead-dark">
-    <tr align="center">
+    <tr class="text-center">
       <th scope="col" colspan="7">Добавление новой категории</th>
     </tr>
     </thead>
     <tr>
-      <th scope="col">Название</th>
+      <th scope="col">
+        <label for="name">Название</label>
+      </th>
       <th scope="col" rowspan="2" class="align-bottom">
         <div class="alert alert-danger" hidden></div>
         <button type="button" class="btn btn-primary create_category">Создать</button>
@@ -54,7 +56,7 @@
     </tr>
     <tr>
       <td class="form-group">
-        <input type="text" name="category" class="form-control" required>
+        <input type="text" id="name" name="category" class="form-control" required>
       </td>
     </tr>
   </table>

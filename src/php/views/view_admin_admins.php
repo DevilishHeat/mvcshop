@@ -1,4 +1,4 @@
-<table class="table" border="1">
+<table class="table">
   <thead class="thead-dark">
   <tr>
     <th scope="col">
@@ -44,9 +44,11 @@ foreach ($data as $admin):
 </table>
 <form class="js-create_admin">
     <br>
-    <table class="table" width="50%" border="1">
-        <thead class="thead-dark" align="center">
-        <th scope="col" colspan="4">Создать новую учётную запись</th>
+    <table class="table">
+        <thead class="thead-dark text-center">
+        <tr>
+          <th scope="col" colspan="4">Создать новую учётную запись</th>
+        </tr>
         </thead>
         <tr>
             <td>
@@ -80,5 +82,5 @@ foreach ($data as $admin):
 </form>
 
 <?php
-includeTemplate('/templates/modals/admin_admins.php');
+include('./templates/modals/admin_admins.php');
 ?>
