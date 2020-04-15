@@ -1,7 +1,7 @@
 Это тренировочный проект, на котором я практиковался в реализации MVC паттерна.  
 
 Сайт можно найти по ссылке: [devilishheatsresumeprojects.ru](http://devilishheatsresumeprojects.ru/)  
-В админку можно зайти через [devilishheatsresumeprojects.ru/admin](devilishheatsresumeprojects.ru/admin) под логином root, без пароля.
+В админку можно зайти через [devilishheatsresumeprojects.ru/admin](http://devilishheatsresumeprojects.ru/admin/) под логином root, без пароля.
   
 Использованные технологии:
 * Вёрстка — Bootstrap.
