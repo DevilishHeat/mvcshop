@@ -27,7 +27,6 @@
                     <a class="btn btn-danger" href="cart">	Корзина <span class="badge badge-light items-counter"><?= isset($_SESSION['cart']) ? count($_SESSION['cart']) : "" ?></span></a>
                   </div>
                 <?php else: ?>
-                <?= $_SESSION['username'] ?>
 								<div class="user-actions__item">
 									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#authorization">Войти</button>
 								</div>

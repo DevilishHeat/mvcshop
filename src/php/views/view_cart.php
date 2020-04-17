@@ -19,7 +19,10 @@
     </thead>
 
     <tbody>
-    <?php foreach ($data as $item): ?>
+    <?php
+    $total_price = 0;
+    foreach ($data as $item):
+      ?>
       <tr class="item">
         <td>
           <img src="<?= $this->images . $item['name'] . '.jpg' ?>" height="50" alt="image">
